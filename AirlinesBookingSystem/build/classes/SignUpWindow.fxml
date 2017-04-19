@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="SignUpWindowPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUpWindowController">
+   <children>
+      <Text layoutX="68.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="69.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="62.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="68.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aadhar No :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="69.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="72.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="28.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="429.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationality :">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text layoutX="446.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email :">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text layoutX="429.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile No :">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text layoutX="436.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text layoutX="442.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="House :">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text layoutX="438.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Locality :">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text layoutX="450.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City :">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text layoutX="447.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State :">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text layoutX="438.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country :">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text layoutX="437.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PinCode :">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <JFXButton fx:id="CheckAvailabilityButton" layoutX="189.0" layoutY="319.0" style="-fx-background-color: brown;" text="Check Avalability" textFill="#ddb6b6">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="SignUpButton" layoutX="275.0" layoutY="495.0" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: brown;" text="SignUp" textFill="#e1c3c3">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="BackButton" layoutX="400.0" layoutY="495.0" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: brown;" text="Back" textFill="#e1bcbc">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXPasswordField fx:id="PasswordTextField" layoutX="158.0" layoutY="371.0" promptText="Enter Password" />
+      <JFXPasswordField fx:id="ConfirmPasswordTextField" layoutX="158.0" layoutY="416.0" promptText="Confirm Password" />
+      <JFXTextField fx:id="FirstNameTextField" layoutX="158.0" layoutY="85.0" prefHeight="25.0" prefWidth="149.0" />
+      <JFXTextField fx:id="LastNameTextField" layoutX="158.0" layoutY="140.0" prefHeight="25.0" prefWidth="149.0" />
+      <JFXTextField fx:id="AadharNoTextField" layoutX="158.0" layoutY="235.0" prefHeight="25.0" prefWidth="155.0" />
+      <JFXTextField fx:id="UsernameTextField" layoutX="158.0" layoutY="279.0" prefHeight="25.0" prefWidth="155.0" />
+      <JFXTextField fx:id="NationalityTextField" layoutX="541.0" layoutY="65.0" prefHeight="25.0" prefWidth="149.0" />
+      <JFXTextField fx:id="EmailTextField" layoutX="541.0" layoutY="105.0" prefHeight="25.0" prefWidth="149.0" />
+      <JFXTextField fx:id="MobileNoTextField" layoutX="541.0" layoutY="147.0" prefHeight="25.0" prefWidth="149.0" />
+      <JFXTextField fx:id="HouseTextField" layoutX="541.0" layoutY="213.0" prefHeight="25.0" prefWidth="149.0" />
+      <JFXTextField fx:id="LocalityTextField" layoutX="541.0" layoutY="258.0" prefHeight="25.0" prefWidth="149.0" />
+      <JFXTextField fx:id="CityTextField" layoutX="541.0" layoutY="299.0" prefHeight="25.0" prefWidth="149.0" />
+      <JFXTextField fx:id="StateTextField" layoutX="541.0" layoutY="346.0" prefHeight="25.0" prefWidth="149.0" />
+      <JFXTextField fx:id="CountryTextField" layoutX="541.0" layoutY="390.0" prefHeight="25.0" prefWidth="149.0" />
+      <JFXTextField fx:id="PinCodeTextField" layoutX="541.0" layoutY="430.0" prefHeight="25.0" prefWidth="149.0" />
+      <JFXDatePicker fx:id="Date_Field" layoutX="167.0" layoutY="185.0" prefHeight="29.0" prefWidth="155.0" />
+   </children>
+</AnchorPane>

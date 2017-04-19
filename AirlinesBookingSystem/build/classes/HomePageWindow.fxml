@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXBadge?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXDrawersStack?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.effect.DisplacementMap?>
+<?import javafx.scene.effect.FloatMap?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="Plane" cache="true" cacheHint="SCALE_AND_ROTATE" depthTest="ENABLE" onMouseEntered="#initialize" prefHeight="647.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePageWindowController">
+   <children>
+      <AnchorPane layoutX="21.0" layoutY="99.0" prefHeight="361.0" prefWidth="323.0" AnchorPane.bottomAnchor="187.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="99.0">
+         <children>
+            <Text fill="#1a0201b0" layoutX="13.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quick Book" wrappingWidth="147.7294921875">
+               <font>
+                  <Font name="DejaVu Sans ExtraLight" size="22.0" />
+               </font>
+            </Text>
+            <Text layoutX="13.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" wrappingWidth="49.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="18.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="13.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Journey Date">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Passengers">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="From_Combo_Box" layoutX="130.0" layoutY="51.0" prefWidth="150.0" />
+            <ComboBox fx:id="To_Combo_Box" layoutX="132.0" layoutY="89.0" prefWidth="150.0" />
+            <ComboBox fx:id="Class_Combo_Box" layoutX="130.0" layoutY="212.0" prefWidth="150.0" />
+            <Text layoutX="18.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Class">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <JFXButton fx:id="Submit_Quick_Book" blendMode="MULTIPLY" buttonType="RAISED" depthTest="ENABLE" layoutX="121.0" layoutY="284.0" ripplerFill="#1b0707" style="-fx-background-color: brown;" text="Submit" textFill="#f2dada" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXDatePicker fx:id="Date_Field" layoutX="131.0" layoutY="129.0" prefHeight="29.0" prefWidth="150.0" promptText="Date" />
+            <Text fx:id="Warning_Text" fill="#e40d0d" layoutX="88.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="229.72949509322643">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+            <JFXComboBox fx:id="No_Of_Passenger_Field" layoutX="207.0" layoutY="168.0" />
+         </children>
+      </AnchorPane>
+      <Hyperlink fx:id="Booking_History_Link" layoutX="487.0" layoutY="173.0" prefHeight="29.0" prefWidth="204.0" text="Booking History">
+         <font>
+            <Font size="18.0" />
+         </font></Hyperlink>
+      <Hyperlink fx:id="Cancel_Ticket_Link" layoutX="494.0" layoutY="229.0" prefHeight="23.0" prefWidth="150.0" text="Cancel Ticket">
+         <font>
+            <Font size="18.0" />
+         </font></Hyperlink>
+      <Text layoutX="466.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flight Status" wrappingWidth="147.7294921875">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Text layoutX="380.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Booking Id" wrappingWidth="147.7294921875">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="LogOut_Botton" blendMode="DARKEN" buttonType="RAISED" layoutX="394.0" layoutY="30.0" prefHeight="29.0" prefWidth="78.0" ripplerFill="#030114" style="-fx-background-color: brown;" text="Log out" textFill="#f2dada">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <effect>
+            <DisplacementMap>
+               <mapData>
+                  <FloatMap />
+               </mapData>
+            </DisplacementMap>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <opaqueInsets>
+            <Insets left="15.0" right="5.0" top="15.0" />
+         </opaqueInsets>
+      </JFXButton>
+      <JFXButton fx:id="My_Profile_Button" layoutX="538.0" layoutY="32.0" onDragDetected="#initialize" onMouseClicked="#initialize" style="-fx-background-color: brown;" text="My Profile" textFill="#f2dada">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="Check_Status" layoutX="476.0" layoutY="519.0" text="Check Status">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField fx:id="Booking_Id_Flight_Status" layoutX="521.0" layoutY="452.0" />
+      <JFXDrawer layoutX="309.0" layoutY="75.0" />
+      <JFXDrawersStack layoutX="266.0" layoutY="95.0" prefHeight="0.0" prefWidth="0.0" />
+      <JFXToolbar layoutX="154.0" layoutY="32.0" prefHeight="0.0" prefWidth="0.0" />
+      <JFXBadge layoutX="229.0" layoutY="95.0" prefHeight="0.0" prefWidth="12.0" />
+      <JFXButton layoutX="66.0" layoutY="18.0" style="-fx-background-image: home.jpg;" text="HOME">
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@home.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>
