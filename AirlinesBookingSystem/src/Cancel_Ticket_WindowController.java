@@ -37,8 +37,6 @@ public class Cancel_Ticket_WindowController implements Initializable {
     @FXML
     private TableColumn<?, ?> FlightIDColumn;
     @FXML
-    private TableColumn<?, ?> CheckBoxColumn;
-    @FXML
     private ImageView Cancel_Button;
 
     /**

@@ -31,10 +31,9 @@
           <TableColumn fx:id="PNRColumn" prefWidth="113.0" text="PNR No." />
           <TableColumn fx:id="DateColumn" prefWidth="131.0" text="Date of Journey" />
             <TableColumn fx:id="NoofPassengersColumn" prefWidth="84.0" text="# Passengers" />
-            <TableColumn fx:id="SourceColumn" prefWidth="117.0" text="Source" />
-            <TableColumn fx:id="DestinationColumn" prefWidth="121.0" text="Destination" />
-            <TableColumn fx:id="FlightIDColumn" prefWidth="108.0" text="Flight ID" />
-            <TableColumn fx:id="CheckBoxColumn" minWidth="0.0" prefWidth="55.0" />
+            <TableColumn fx:id="SourceColumn" prefWidth="133.0" text="Source" />
+            <TableColumn fx:id="DestinationColumn" prefWidth="135.0" text="Destination" />
+            <TableColumn fx:id="FlightIDColumn" prefWidth="133.0" text="Flight ID" />
         </columns>
       </TableView>
       <ImageView fx:id="Cancel_Button" fitHeight="26.0" fitWidth="74.0" layoutX="637.0" layoutY="449.0" pickOnBounds="true" preserveRatio="true">

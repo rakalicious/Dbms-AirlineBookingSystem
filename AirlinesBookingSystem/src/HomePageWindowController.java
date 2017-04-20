@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,19 +71,37 @@ public class HomePageWindowController implements Initializable {
     private JFXButton Check_Status;
     @FXML
     private JFXTextField Booking_Id_Flight_Status;
-    String From_value = "", To_value = "", Class;
-    Date date;
-    int day;
-    int passenger;
+   public static String From_value = "", To_value = "", Class;
+   public static Date date;
+    public static int day;
+    public static  int passenger;
+      public static HashMap<String,String>Codes;
     ObservableList<String> from = FXCollections.observableArrayList("Dubai", "Jaipur", "Ahmedabad", "Delhi ", "Mumbai", "Kolkata", "Banglore", "Hyderabad", "Chennai", "Pune", "Lelo");
     ObservableList<String> classs = FXCollections.observableArrayList("Business", "Economy");
     ObservableList<Integer> passengers = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
+ 
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+         Codes=new HashMap();
+  Codes.put("DEL","Delhi");
+Codes.put("BOM","Mumbai");
+Codes.put("JAI","Jaipur");
+Codes.put("KOL","Kolkata");
+Codes.put("BLR","Bangalore");
+Codes.put("AMD","Ahmedabad");
+Codes.put("DXB","Dubai");
+Codes.put("MAA","Chennai");
+Codes.put("PNQ","Pune");
+Codes.put("HYD","Hyderabad");
+        
+        
         From_Combo_Box.setOnAction((event) -> {
 
             From_value = (String) From_Combo_Box.getSelectionModel().getSelectedItem();
@@ -158,7 +177,27 @@ public class HomePageWindowController implements Initializable {
                 System.out.println(day);
                 System.out.println(passenger);
                 System.out.println(Class);
-               
+                try {
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TicketAvailabilityWindow.fxml"));
+                    Parent root1;
+
+                    root1 = (Parent) fxmlLoader.load();
+
+                    root1.setId("paneMyProfile");
+                    Stage stage4 = new Stage();
+                    stage4.resizableProperty().setValue(Boolean.FALSE);
+                    stage4.setTitle("MyProfile");
+                    Scene scene = new Scene(root1);
+                    stage4.setScene(scene);
+                    stage4.show();
+                    Stage stage5;
+                    stage5 = (Stage) My_Profile_Button.getScene().getWindow();
+                    stage5.close();
+
+                } catch (IOException ex) {
+                    Logger.getLogger(HomePageWindowController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         

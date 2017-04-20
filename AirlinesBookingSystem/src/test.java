@@ -44,7 +44,7 @@ public class test extends Application {
                      //   con = DriverManager.getConnection("jdbc:oracle:thin:@172.26.45:1522:dbmsproject", USER, PASS);
 
            con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.137.1:1522:dbmsproject", USER, PASS);
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("TicketAvailabilityWindow.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("GeneralLoginWindow.fxml"));
             primaryStage.resizableProperty().setValue(Boolean.FALSE);
             root.setId("pane");
             Scene scene = new Scene(root);

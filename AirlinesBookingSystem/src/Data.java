@@ -18,15 +18,15 @@ public class Data {
      public final SimpleStringProperty c ;
       public final SimpleStringProperty d ;
        public final SimpleStringProperty e ;
-             public final SimpleStringProperty f ;
+        
     
-    public Data(String a,String b,String c,String d,String e,String f) {
+    public Data(String a,String b,String c,String d,String e) {
         this.a=new SimpleStringProperty(a);
-        this.b=new SimpleStringProperty(b);;
-        this.c=new SimpleStringProperty(c);;
-        this.d=new SimpleStringProperty(d);;
-        this.e=new SimpleStringProperty(e);;
-        this.f=new SimpleStringProperty(f);;
+        this.b=new SimpleStringProperty(b);
+        this.c=new SimpleStringProperty(c);
+        this.d=new SimpleStringProperty(d);
+        this.e=new SimpleStringProperty(e);
+        
     }
     public String getA() {
         return a.get();
@@ -64,12 +64,7 @@ public class Data {
 
 
    
-      public String getF() {
-        return f.get();
-    }
-    public void setF(String fName) {
-        f.set(fName);
-    }
+      
 }
     
 
