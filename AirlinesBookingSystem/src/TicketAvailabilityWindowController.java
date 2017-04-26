@@ -8,14 +8,20 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.CallableStatement;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,10 +44,12 @@ import oracle.jdbc.OracleTypes;
  *
  * @author vips
  */
-public class TicketAvailabilityWindowController implements Initializable {
+public class TicketAvailabilityWindowController implements Initializable  {
 
     @FXML
     private JFXButton MyProfileButton;
+    @FXML
+    private JFXButton BookNowButton;
     @FXML
     private JFXButton LogOutButton;
     @FXML
@@ -68,8 +76,14 @@ public class TicketAvailabilityWindowController implements Initializable {
     private TableColumn<Data, String> FareColumn;
     @FXML
     private TableColumn<Data, String> DurationColumn;
+        @FXML
+    private Text Warning;
 
     ObservableList<Data> lst = FXCollections.observableArrayList();
+    public static HashMap<String, String> Codes;
+    java.sql.Date sqlDate;
+    public static Data neww;
+    Data old;
 
     /**
      * Initializes th controller class..
@@ -77,9 +91,24 @@ public class TicketAvailabilityWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        Codes = new HashMap<String,String>();
+        Codes.put("Delhi", "DEL");
+        Codes.put("Mumbai", "BOM");
+        Codes.put("Jaipur", "JAI");
+        Codes.put("Kolkata", "KOL");
+        Codes.put("Banglore", "BLR");
+        Codes.put("Ahmedabad", "AMD");
+        Codes.put("Dubai", "DXB");
+        Codes.put("Chennai", "MAA");
+        Codes.put("Pune", "PNQ");
+        Codes.put("Hyderabad", "HYD");
+        System.out.println("-------"+Codes.get("Delhi")+"---------------");
+        System.out.println(HomePageWindowController.From_value);
+        System.out.println( Codes.get(HomePageWindowController.From_value));
+
         FromText.setText(HomePageWindowController.From_value);
         ToText.setText(HomePageWindowController.To_value);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         String datestring = dateFormat.format(HomePageWindowController.date);
         DateText.setText(datestring);
@@ -93,40 +122,69 @@ public class TicketAvailabilityWindowController implements Initializable {
         FareColumn.setCellValueFactory(new PropertyValueFactory<Data, String>("d"));
         DurationColumn.setCellValueFactory(new PropertyValueFactory<Data, String>("e"));
 
-     
-
+       try{ 
+        String d1="01-05-2017";
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+        
+        java.util.Date dt1 = sdf1.parse(d1);
+        sqlDate = new Date(dt1.getTime());
+        
+        
+        
+       } catch (ParseException ex) {
+            Logger.getLogger(TicketAvailabilityWindowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
         try {
-           
+                System.out.println("fvsdgv");
+
             String quer = "begin get_all_flights(?,?,?,?,?,?);end;";
-      CallableStatement s3;
+            CallableStatement s3;
 
             s3 = test.con.prepareCall(quer);
-            s3.setString(1, HomePageWindowController.Codes.get(HomePageWindowController.From_value));
-            s3.setString(2, HomePageWindowController.Codes.get(HomePageWindowController.To_value));
-            s3.setDate(3, HomePageWindowController.date);
+            s3.setString(1, Codes.get(HomePageWindowController.From_value));
+            s3.setString(2, Codes.get(HomePageWindowController.To_value));
+            s3.setDate(3, java.sql.Date.valueOf("2017-05-01"));
             s3.setInt(4, HomePageWindowController.day);
             s3.setInt(5, HomePageWindowController.passenger);
             s3.registerOutParameter(6, OracleTypes.CURSOR);
-            s3.execute();
-            ResultSet rs = ((OracleCallableStatement) s3).getCursor(6);
+            System.out.println();
+            s3.executeUpdate();
+            System.out.println(Codes.get(HomePageWindowController.From_value)+" "+Codes.get(HomePageWindowController.To_value)+" "+java.sql.Date.valueOf("2017-05-01")+" "+ HomePageWindowController.day+" "+HomePageWindowController.passenger);
+
+            ResultSet rs = (ResultSet)s3.getObject(6);
+            Random r=new Random();
+           int flag=0;
             while (rs.next()) {
-                                      System.out.println("fvsdgv");
+                System.out.println("fvsdg8989v");
+                flag=1;
 
-                String a,b,c,d,e;
-               a= rs.getString(1);
-                b= rs.getString(2);
-                 c= rs.getString(3);
-                  d= rs.getString(4);
-                   e= Integer.toString(rs.getInt(5));
-                      Data qq = new Data(a,b,c,d,e);
-                      System.out.println(a+b+c+d+e);
-
-        lst.add(qq);
-        PlaneTable.setItems(lst);
                 
-      }
-            
-            
+                String a, b, c, d, e;
+                a = rs.getString(1);
+                b = rs.getString(2);
+                c = rs.getString(3);
+                d = rs.getString(4);
+                e = Integer.toString(rs.getInt(5));
+                String x=a+"("+b+")";
+                int xxxx= Integer.parseInt(c) - Integer.parseInt(d);
+                
+                int qqqq=Math.abs(xxxx);
+                String w=Integer.toString(qqqq);
+                Data qq = new Data(x,c, d, e,w);
+                System.out.println(x+c+d+e+w);
+
+                lst.add(qq);
+
+            }
+            PlaneTable.setItems(lst);
+            if(flag==0)
+            {
+                   
+    Warning.setText("* No Flights For Given Date .  Modify Your Search");
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(TicketAvailabilityWindowController.class.getName()).log(Level.SEVERE, null, ex);
@@ -188,6 +246,89 @@ public class TicketAvailabilityWindowController implements Initializable {
 
             }
         });
+        
+            PlaneTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener< Data>() {
+
+                    
+
+            @Override
+            public void changed(ObservableValue<? extends Data> observable, Data oldValue, Data newValue) {
+                
+                neww=PlaneTable.getSelectionModel().getSelectedItem();
+                System.out.println(neww.a);
+                //throw new UnsupportedOperationException("Not supported yet."); 
+            }
+                });
+            
+            
+            
+             BookNowButton.setOnAction(new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent event) {
+
+                try {
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AboutAllPassengers.fxml"));
+                    Parent root1;
+
+                    root1 = (Parent) fxmlLoader.load();
+
+                    root1.setId("paneMyProfile");
+                    Stage stage4 = new Stage();
+                    stage4.resizableProperty().setValue(Boolean.FALSE);
+                    stage4.setTitle("MyProfile");
+                    Scene scene = new Scene(root1);
+                    stage4.setScene(scene);
+                    stage4.show();
+                    Stage stage5;
+                    stage5 = (Stage) MyProfileButton.getScene().getWindow();
+                    stage5.close();
+
+                } catch (IOException ex) {
+                    Logger.getLogger(HomePageWindowController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+            
+            
+        
+           ModifyButton.setOnAction(new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent event) {
+
+                try {
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TicketCheckingModifyWindow.fxml"));
+                    Parent root1;
+
+                    root1 = (Parent) fxmlLoader.load();
+
+                    root1.setId("paneMyProfile");
+                    Stage stage4 = new Stage();
+                    stage4.resizableProperty().setValue(Boolean.FALSE);
+                    stage4.setTitle("MyProfile");
+                    Scene scene = new Scene(root1);
+                    stage4.setScene(scene);
+                    stage4.show();
+                    Stage stage5;
+                    stage5 = (Stage) MyProfileButton.getScene().getWindow();
+                    stage5.close();
+
+                } catch (IOException ex) {
+                    Logger.getLogger(HomePageWindowController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
     }
 

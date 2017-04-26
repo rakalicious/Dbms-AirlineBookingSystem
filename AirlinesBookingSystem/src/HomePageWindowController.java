@@ -75,10 +75,9 @@ public class HomePageWindowController implements Initializable {
    public static Date date;
     public static int day;
     public static  int passenger;
-      public static HashMap<String,String>Codes;
-    ObservableList<String> from = FXCollections.observableArrayList("Dubai", "Jaipur", "Ahmedabad", "Delhi ", "Mumbai", "Kolkata", "Banglore", "Hyderabad", "Chennai", "Pune", "Lelo");
+    ObservableList<String> from = FXCollections.observableArrayList("Dubai", "Jaipur", "Ahmedabad", "Delhi", "Mumbai", "Kolkata", "Banglore", "Hyderabad", "Chennai", "Pune");
     ObservableList<String> classs = FXCollections.observableArrayList("Business", "Economy");
-    ObservableList<Integer> passengers = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    ObservableList<Integer> passengers = FXCollections.observableArrayList(1, 2, 3, 4, 5);
 
  
     
@@ -89,18 +88,10 @@ public class HomePageWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-         Codes=new HashMap();
-  Codes.put("DEL","Delhi");
-Codes.put("BOM","Mumbai");
-Codes.put("JAI","Jaipur");
-Codes.put("KOL","Kolkata");
-Codes.put("BLR","Bangalore");
-Codes.put("AMD","Ahmedabad");
-Codes.put("DXB","Dubai");
-Codes.put("MAA","Chennai");
-Codes.put("PNQ","Pune");
-Codes.put("HYD","Hyderabad");
-        
+         From_Combo_Box.setItems(from);
+        To_Combo_Box.setItems(from);
+        Class_Combo_Box.setItems(classs);
+        No_Of_Passenger_Field.setItems(passengers);
         
         From_Combo_Box.setOnAction((event) -> {
 
@@ -126,10 +117,7 @@ Codes.put("HYD","Hyderabad");
             Class = (String) Class_Combo_Box.getSelectionModel().getSelectedItem();
         });
 
-        From_Combo_Box.setItems(from);
-        To_Combo_Box.setItems(from);
-        Class_Combo_Box.setItems(classs);
-        No_Of_Passenger_Field.setItems(passengers);
+       
         No_Of_Passenger_Field.setOnAction((event) -> {
 
             passenger = (Integer) No_Of_Passenger_Field.getSelectionModel().getSelectedItem();

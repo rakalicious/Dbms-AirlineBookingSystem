@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -13,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,6 +63,40 @@ public class GeneralLoginWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        ForOfficialsLink.setOnAction(new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent event) {
+                
+                 try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginWindow.fxml"));
+                    Parent root1 = (Parent) fxmlLoader.load();
+                    root1.setId("paneSignUp");
+                    Stage stage4 = new Stage();
+                    stage4.resizableProperty().setValue(Boolean.FALSE);
+                    //stage4.getIcons().add(new Image("ico.png"));
+                    stage4.setTitle("SignUp");
+                    Scene scene = new Scene(root1);
+                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                    stage4.setScene(scene);
+                    stage4.show();
+                    Stage stage5;
+                    stage5 = (Stage) SignUpButton.getScene().getWindow();
+                    stage5.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            
+                
+                
+                
+                
+            }});
+        
+        
+        
+        
+        
+      
         SignUpButton.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {

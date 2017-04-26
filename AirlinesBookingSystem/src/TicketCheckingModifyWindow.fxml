@@ -3,14 +3,11 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXSlider?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="520.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="TicketCheckingModifyWindowController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicketCheckingModifyWindowController">
    <children>
       <Text layoutX="145.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
          <font>
@@ -37,15 +34,16 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="FromTextField" layoutX="237.0" layoutY="73.0" prefHeight="25.0" prefWidth="148.0" />
-      <JFXTextField fx:id="ToTextField" layoutX="237.0" layoutY="114.0" prefHeight="25.0" prefWidth="148.0" />
-      <JFXButton layoutX="232.0" layoutY="310.0" style="-fx-background-color: brown;" text="Apply" textFill="#fff9f9">
+      <JFXButton fx:id="Apply" layoutX="232.0" layoutY="310.0" style="-fx-background-color: brown;" text="Apply" textFill="#fff9f9">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXDatePicker fx:id="DateTextField" layoutX="243.0" layoutY="150.0" />
-      <JFXSlider fx:id="PassengerSlider" layoutX="241.0" layoutY="208.0" max="10.0" prefHeight="14.0" prefWidth="158.0" />
-      <JFXComboBox layoutX="234.0" layoutY="244.0" prefHeight="25.0" prefWidth="158.0" />
+      <JFXDatePicker fx:id="DateTextField" layoutX="252.0" layoutY="150.0" prefHeight="28.0" prefWidth="120.0" />
+      <JFXComboBox fx:id="Class_Combo" layoutX="242.0" layoutY="244.0" prefHeight="25.0" prefWidth="128.0" />
+      <JFXComboBox fx:id="From_Combo" layoutX="247.0" layoutY="73.0" prefHeight="25.0" prefWidth="107.0" />
+      <JFXComboBox fx:id="Passenger_Combo" layoutX="247.0" layoutY="193.0" prefHeight="25.0" prefWidth="107.0" />
+      <JFXComboBox fx:id="To_Combo" layoutX="252.0" layoutY="114.0" prefHeight="25.0" prefWidth="107.0" />
+      <Text fx:id="Warning_Text" layoutX="164.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="166.13671875" />
    </children>
 </AnchorPane>

@@ -7,6 +7,9 @@
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -35,8 +38,10 @@ public class OperatorChangePasswordWindowController implements Initializable {
     private JFXButton ChangePasswordButton;
     @FXML
     private JFXButton BackButton;
-     @FXML
+    @FXML
     private Text WarningText;
+    PreparedStatement stt;
+    ResultSet r1;
 
     /**
      * Initializes the controller class.
@@ -67,12 +72,25 @@ public class OperatorChangePasswordWindowController implements Initializable {
                 }
             }
         });
-        
+
         ChangePasswordButton.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
                 try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OperatorMainWindow.fxml"));
+                    stt = test.con.prepareStatement("update emp_login_record set password = ?" + " where emp_id ='" + LoginWindowController.userNameData + "'");
+                    String sss = "select t.* from emp_login_record t where emp_id ='" + LoginWindowController.userNameData + "'";
+                                       Statement stmtt = test.con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+                    r1 = stmtt.executeQuery(sss);
+                    if(r1.next()){
+                    if (!OldPasswordTextField.getText().equals("")) {
+                        if (OldPasswordTextField.getText().equals(r1.getString("password")) && NewPasswordTextFild.getText().equals(ConfirmPasswordTextField.getText())) {
+
+                            stt.setString(1, NewPasswordTextFild.getText());
+                            stt.executeUpdate();
+                            
+                            
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OperatorMainWindow.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
                     root1.setId("paneOpMainWindow");
                     Stage stage4 = new Stage();
@@ -86,11 +104,22 @@ public class OperatorChangePasswordWindowController implements Initializable {
                     Stage stage5;
                     stage5 = (Stage) BackButton.getScene().getWindow();
                     stage5.close();
+                        }
+                    else
+                        {
+                            OldPasswordTextField.setText("");
+                                NewPasswordTextFild.setText("");
+                                ConfirmPasswordTextField.setText("");
+                                WarningText.setText("Password Doesn't Match");
+                        }
+                    }
+                    }
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
-    }    
-    
+    }
+
 }

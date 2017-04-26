@@ -19,7 +19,7 @@ public class Data3 {
     public final SimpleStringProperty d;
     public final SimpleStringProperty e;
 
-    public Data3(String a, String b, String c, String d, String e, String f) {
+    public Data3(String a, String b, String c, String d, String e) {
         this.a = new SimpleStringProperty(a);
         this.b = new SimpleStringProperty(b);
         this.c = new SimpleStringProperty(c);

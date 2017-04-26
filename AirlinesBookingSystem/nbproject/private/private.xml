@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/vips/B656147956143C95/Users/vipul/Downloads/Dbms-AirlineBookingSystem-master/AirlinesBookingSystem/src/Data.java</file>
-            <file>file:/media/vips/B656147956143C95/Users/vipul/Downloads/Dbms-AirlineBookingSystem-master/AirlinesBookingSystem/src/SignUpWindowController.java</file>
-            <file>file:/media/vips/B656147956143C95/Users/vipul/Downloads/Dbms-AirlineBookingSystem-master/AirlinesBookingSystem/src/GeneralLoginWindowController.java</file>
-            <file>file:/media/vips/B656147956143C95/Users/vipul/Downloads/Dbms-AirlineBookingSystem-master/AirlinesBookingSystem/src/TicketAvailabilityWindowController.java</file>
-            <file>file:/media/vips/B656147956143C95/Users/vipul/Downloads/Dbms-AirlineBookingSystem-master/AirlinesBookingSystem/src/HomePageWindowController.java</file>
+            <file>file:/C:/Users/vips/Desktop/AirlinesBookingSystem/src/AboutAllPassengersController.java</file>
+            <file>file:/C:/Users/vips/Desktop/AirlinesBookingSystem/src/AboutAllPassengers.fxml</file>
+            <file>file:/C:/Users/vips/Desktop/AirlinesBookingSystem/src/PassengerDetailWindowController.java</file>
+            <file>file:/C:/Users/vips/Desktop/AirlinesBookingSystem/src/GeneralLoginWindowController.java</file>
         </group>
     </open-files>
 </project-private>
