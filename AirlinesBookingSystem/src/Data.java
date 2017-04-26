@@ -6,10 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/**
- *
- * @author vips
- */
+
 public class Data {
 
     public final SimpleStringProperty a;
