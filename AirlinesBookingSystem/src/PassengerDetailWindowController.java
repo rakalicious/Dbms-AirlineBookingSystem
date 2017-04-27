@@ -17,11 +17,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import oracle.jdbc.OracleCallableStatement;
 import oracle.jdbc.OracleTypes;
 
@@ -128,6 +134,34 @@ public class PassengerDetailWindowController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(TicketAvailabilityWindowController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+                 BackButton.setOnAction(new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent event) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OperatorMainWindow.fxml"));
+                    Parent root1 = (Parent) fxmlLoader.load();
+                    root1.setId("paneSignUp");
+                    Stage stage4 = new Stage();
+                    stage4.resizableProperty().setValue(Boolean.FALSE);
+                    //stage4.getIcons().add(new Image("ico.png"));
+                    stage4.setTitle("SignUp");
+                    Scene scene = new Scene(root1);
+                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                    stage4.setScene(scene);
+                    stage4.show();
+                    Stage stage5;
+                    stage5 = (Stage) BackButton.getScene().getWindow();
+                    stage5.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                
+                
+                
+            }
+                 });
     }
 
 }
