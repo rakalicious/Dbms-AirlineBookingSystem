@@ -25,6 +25,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -56,7 +57,7 @@ public class GeneralLoginWindowController implements Initializable {
     ResultSet r1;
     PreparedStatement st;
     public static String userNameData;
-
+public static Button xxxxx ;
     /**
      * Initializes the controller class.
      */
@@ -68,7 +69,7 @@ public class GeneralLoginWindowController implements Initializable {
             public void handle(ActionEvent event) {
                 
                  try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginWindow.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GeneralLoginWindow.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
                     root1.setId("paneSignUp");
                     Stage stage4 = new Stage();
@@ -81,7 +82,7 @@ public class GeneralLoginWindowController implements Initializable {
                     stage4.show();
                     Stage stage5;
                     stage5 = (Stage) SignUpButton.getScene().getWindow();
-                    stage5.close();
+                   stage5.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

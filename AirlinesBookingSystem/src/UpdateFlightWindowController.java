@@ -23,6 +23,7 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
@@ -67,11 +68,15 @@ public class UpdateFlightWindowController implements Initializable {
 
     @FXML
     private TableColumn<Data2, String> SeatsRewmainigColumn;
+    
+    @FXML
+    private JFXButton Edit;
+
 
     public static HashMap<String, String> Codes;
     private Text DateText;
     ObservableList<Data2> lst = FXCollections.observableArrayList();
-
+Data2 selected;
     /**
      * Initializes the controller class.
      */
@@ -79,24 +84,18 @@ public class UpdateFlightWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         
-        TableFlights.setEditable(true);
-       /* StatusColumn.setOnEditCommit(
-    new EventHandler<CellEditEvent<Data2, String>>() {
-            @Override
-            public void handle(CellEditEvent<Data2, String> event) {
-                ((Data2) event.getTableView().getItems().get(
-                event.getTablePosition().getRow())
-                ).setF(event.getNewValue());
-               
-            }
-      
+TableFlights.getSelectionModel().selectedItemProperty().addListener(new ChangeListener< Data2>() {
+    @Override
+    public void changed(ObservableValue<? extends Data2> observable, Data2 oldValue, Data2 newValue) {
+
+            selected=TableFlights.getSelectionModel().getSelectedItem();
+
+
     }
-);*/
-        //TableFlights.getSelectionModel().selectedIndexProperty().addListener(
-          //      new edit());
-         // TableFlights.setSelectionModel();
-//TableFlights.getSelectionModel().getSelectedItem();
-        
+
+                    
+
+});
         
         
         
@@ -158,7 +157,7 @@ java.math.BigDecimal x=(java.math.BigDecimal)s.getObject(3);
 System.out.println(x);
 
             
-            
+               
                 Data2 qq = new Data2(a, b, c, d, f, g,x.toString());
                 System.out.println(a + b + c + d + e + f + g);
 
@@ -175,15 +174,5 @@ System.out.println(x);
     }
     
    
-    private class edit implements ChangeListener{
 
-        
-        @Override
-        public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-            String d=newValue.toString();
-            System.out.println();
-        }
-
-
-}
 }
