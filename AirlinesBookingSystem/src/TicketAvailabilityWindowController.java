@@ -86,6 +86,7 @@ public class TicketAvailabilityWindowController implements Initializable  {
     java.sql.Date sqlDate;
     public static Data neww;
     Data old;
+    
 
     /**
      * Initializes th controller class..
@@ -148,7 +149,7 @@ public class TicketAvailabilityWindowController implements Initializable  {
             s3 = test.con.prepareCall(quer);
             s3.setString(1, Codes.get(HomePageWindowController.From_value));
             s3.setString(2, Codes.get(HomePageWindowController.To_value));
-            s3.setDate(3, java.sql.Date.valueOf("2017-05-01"));
+            s3.setDate(3, HomePageWindowController.date);
             s3.setInt(4, HomePageWindowController.day);
             s3.setInt(5, HomePageWindowController.passenger);
             s3.registerOutParameter(6, OracleTypes.CURSOR);

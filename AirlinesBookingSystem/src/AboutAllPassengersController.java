@@ -13,6 +13,7 @@ import java.sql.CallableStatement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -92,7 +93,11 @@ public class AboutAllPassengersController implements Initializable {
     @FXML
     private Text ArrivalText;
 String Gen1,Gen2,Gen3,Gen4,Gen5;
-    /**
+  public static String FlightId;   
+  public static String PNR;
+  public static int FARE;
+/**
+     * 
      * Initializes the controller class.
      */
     @Override
@@ -179,18 +184,31 @@ String Gen1,Gen2,Gen3,Gen4,Gen5;
             public void handle(ActionEvent event) {
                 try {
                     
-                                String quer = "begin ticketbooking(?,?,?,?,?);end;";
+                                String quer = "begin ticketbookingPNR(?,?,?,?,?,?);end;";
                                 
             CallableStatement s3;
             
             s3 = test.con.prepareCall(quer);
-          //  s3.setString(1,TicketAvailabilityWindowController.neww.);
-            s3.setString(2, "");
-            s3.setDate(3, java.sql.Date.valueOf("2017-05-01"));
-            s3.setInt(4,0);
-            s3.setInt(5, 0);
+            StringTokenizer s= new StringTokenizer(TicketAvailabilityWindowController.neww.getA(),"(");
+            System.out.println(s.nextToken());
+            String p=s.nextToken();
+         FlightId=p.substring(0, p.length()-1);
+          // System.out.println(FlightId);
+
+          s3.setString(1,FlightId);
+            s3.setDate(2, HomePageWindowController.date);
+            s3.setInt(3,HomePageWindowController.passenger );
+            s3.setString(4,GeneralLoginWindowController.userNameData);
+            FARE=(HomePageWindowController.passenger)*(Integer.parseInt(TicketAvailabilityWindowController.neww.getD()));
+            s3.setInt(5,FARE);
             System.out.println();
+            s3.registerOutParameter(6,OracleTypes.NUMBER);
+
             s3.executeUpdate();
+            java.math.BigDecimal x=(java.math.BigDecimal)s3.getObject(6);
+            PNR=x.toString();
+            System.out.println(PNR);
+
                     
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FinalBookingInfo.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
