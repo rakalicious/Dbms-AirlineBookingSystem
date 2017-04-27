@@ -57,7 +57,7 @@ public class GeneralLoginWindowController implements Initializable {
     ResultSet r1;
     PreparedStatement st;
     public static String userNameData;
-public static Button xxxxx ;
+
     /**
      * Initializes the controller class.
      */
@@ -69,7 +69,7 @@ public static Button xxxxx ;
             public void handle(ActionEvent event) {
                 
                  try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GeneralLoginWindow.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginWindow.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
                     root1.setId("paneSignUp");
                     Stage stage4 = new Stage();

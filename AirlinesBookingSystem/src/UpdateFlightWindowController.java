@@ -5,6 +5,7 @@
  */
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.net.URL;
 import java.sql.CallableStatement;
@@ -20,9 +21,13 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
@@ -32,6 +37,7 @@ import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import oracle.jdbc.OracleCallableStatement;
 import oracle.jdbc.OracleTypes;
 
@@ -75,8 +81,8 @@ public class UpdateFlightWindowController implements Initializable {
 
     public static HashMap<String, String> Codes;
     private Text DateText;
-    ObservableList<Data2> lst = FXCollections.observableArrayList();
-Data2 selected;
+    public static ObservableList<Data2> lst = FXCollections.observableArrayList();
+public static Data2 selected;
     /**
      * Initializes the controller class.
      */
@@ -170,8 +176,40 @@ System.out.println(x);
             Logger.getLogger(TicketAvailabilityWindowController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        Edit.setOnAction(new EventHandler<ActionEvent>() {
 
+            public void handle(ActionEvent event) {
+                
+                            try{
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditStatus.fxml"));
+                    Parent root1;
+
+                    root1 = (Parent) fxmlLoader.load();
+
+                    root1.setId("pane");
+                    Stage stage4 = new Stage();
+                    stage4.resizableProperty().setValue(Boolean.FALSE);
+                    stage4.setTitle("Status");
+                    Scene scene = new Scene(root1);
+                    //scene.getStylesheets().addAll(this.getClass().getResource("x.css").toExternalForm());
+
+                    stage4.setScene(scene);
+                    stage4.show();
+
+                    
+
+            //open popup jere, close, observable list.add
+        }   catch (IOException ex) {
+                Logger.getLogger(UpdateFlightWindowController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+                
+            }
+        });
+        
     }
+    
+    
     
    
 

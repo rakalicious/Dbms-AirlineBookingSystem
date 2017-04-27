@@ -28,10 +28,10 @@
         <columns>
           <TableColumn fx:id="FlightIdColumn" editable="false" prefWidth="93.0" text="Flight ID" />
           <TableColumn fx:id="SourceColumn" editable="false" prefWidth="94.0" text="Source" />
-            <TableColumn fx:id="DestinationColumn" editable="false" prefWidth="142.0" text="Destination" />
-            <TableColumn fx:id="DepartsColumn" editable="false" prefWidth="124.0" text="Departs" />
-            <TableColumn fx:id="ReachesDestinationColumn" editable="false" prefWidth="111.0" text="Reaches Dest." />
-            <TableColumn fx:id="StatusColumn" prefWidth="118.0" text="Status" />
+            <TableColumn fx:id="DestinationColumn" editable="false" prefWidth="120.0" text="Destination" />
+            <TableColumn fx:id="DepartsColumn" editable="false" prefWidth="103.0" text="Departs" />
+            <TableColumn fx:id="ReachesDestinationColumn" editable="false" prefWidth="91.0" text="Reaches Dest." />
+            <TableColumn fx:id="StatusColumn" prefWidth="181.0" text="Status" />
             <TableColumn fx:id="SeatsRewmainigColumn" editable="false" prefWidth="106.0" text="#Seats Remaining" />
         </columns>
       </TableView>
@@ -45,6 +45,6 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <JFXButton fx:id="Edit" layoutX="193.0" layoutY="509.0" />
+      <JFXButton fx:id="Edit" layoutX="71.0" layoutY="509.0" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: brown;" text="Edit" textFill="#eed3d3" />
    </children>
 </AnchorPane>
