@@ -7,8 +7,11 @@
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,16 +34,31 @@ public class PassengerDetailWindowController implements Initializable {
 
     @FXML
     private TableView<Data3> PassengersTable;
+
     @FXML
-    private TableColumn<Data3, String> FirstNameColumn;
+    private TableColumn<Data3, String> Pnr;
+
     @FXML
-    private TableColumn<Data3, String> LastNameColumn;
+    private TableColumn<Data3, String> Flightid;
+
     @FXML
-    private TableColumn<Data3, String> FlightIDColumn;
+    private TableColumn<Data3, String> Username;
+
     @FXML
-    private TableColumn<Data3, String> DateColumn;
+    private TableColumn<Data3, String> Date_book;
+
     @FXML
-    private TableColumn<Data3, String> FareColumn;
+    private TableColumn<Data3, String> seat;
+
+    @FXML
+    private TableColumn<Data3, String> fare;
+
+    @FXML
+    private TableColumn<Data3, String> datejourney;
+
+    @FXML
+    private TableColumn<Data3, String> status;
+
     @FXML
     private JFXButton BackButton;
     ObservableList<Data3> lst = FXCollections.observableArrayList();
@@ -52,39 +70,55 @@ public class PassengerDetailWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
-        FirstNameColumn.setCellValueFactory(new PropertyValueFactory<Data3, String>("a"));
-        LastNameColumn.setCellValueFactory(new PropertyValueFactory<Data3, String>("b"));
+        Pnr.setCellValueFactory(new PropertyValueFactory<Data3, String>("a"));
+        Flightid.setCellValueFactory(new PropertyValueFactory<Data3, String>("b"));
 
-        FlightIDColumn.setCellValueFactory(new PropertyValueFactory<Data3, String>("c"));
-        DateColumn.setCellValueFactory(new PropertyValueFactory<Data3, String>("d"));
-        FareColumn.setCellValueFactory(new PropertyValueFactory<Data3, String>("e"));
+        Username.setCellValueFactory(new PropertyValueFactory<Data3, String>("c"));
+        Date_book.setCellValueFactory(new PropertyValueFactory<Data3, String>("d"));
+        seat.setCellValueFactory(new PropertyValueFactory<Data3, String>("e"));
+        fare.setCellValueFactory(new PropertyValueFactory<Data3, String>("f"));
+
+        datejourney.setCellValueFactory(new PropertyValueFactory<Data3, String>("g"));
+
+        status.setCellValueFactory(new PropertyValueFactory<Data3, String>("h"));
 
         try {
 
-            String quer = "begin get_all_flights(?,?,?,?,?,?);end;";
-            CallableStatement s3;
+            String quer = "select * from transactions";
+            PreparedStatement s3;
 
             s3 = test.con.prepareCall(quer);
-            //s3.setString(1, Codes.get(HomePageWindowController.From_value));
-            //s3.setString(2, Codes.get(HomePageWindowController.To_value));
-            s3.setDate(3, HomePageWindowController.date);
-            s3.setInt(4, HomePageWindowController.day);
-            s3.setInt(5, HomePageWindowController.passenger);
-            s3.registerOutParameter(6, OracleTypes.CURSOR);
-            s3.execute();
+            
+           
+           ResultSet rs=s3.executeQuery();
 
-            ResultSet rs = (ResultSet) s3.getObject(6);
             while (rs.next()) {
-                System.out.println("fvsdgv");
+            
 
-                String a, b, c, d, e;
-                a = rs.getString(1);
-                b = rs.getString(2);
+                String a, b, c, d, e,f,g,h;
+                java.math.BigDecimal xx=rs.getBigDecimal(1);
+                java.sql.Timestamp q=rs.getTimestamp(2);
+                
+                
+                a = xx.toString();
+                b = q.toString();
                 c = rs.getString(3);
                 d = rs.getString(4);
-                e = Integer.toString(rs.getInt(5));
-                Data3 qq = new Data3(a, b, c, d, e);
-                System.out.println(a + b + c + d + e);
+                xx=rs.getBigDecimal(5);
+                e=xx.toString();
+                  xx=rs.getBigDecimal(6);
+                f=xx.toString();
+                g=rs.getString(7);
+                java.sql.Date date=rs.getDate(8);
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+       h = dateFormat.format(date);
+        
+                
+                
+              
+               Data3 qq = new Data3(a, d, c, b, f,e,h,g);
+                System.out.println();
 
                 lst.add(qq);
 

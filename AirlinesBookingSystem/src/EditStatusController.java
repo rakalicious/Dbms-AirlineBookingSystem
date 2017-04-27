@@ -9,7 +9,13 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.sql.CallableStatement;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,7 +40,26 @@ public class EditStatusController implements Initializable {
     private JFXTextField Delayed_By;
         @FXML
     private JFXButton Change;
-    ObservableList<String> stat = FXCollections.observableArrayList("OnTime", "Delayed","Cancell");
+        @FXML
+    private Text Flight_id;
+
+    @FXML
+    private Text dest;
+
+    @FXML
+    private Text src;
+
+    @FXML
+    private Text departs;
+
+    @FXML
+    private Text reach;
+
+    @FXML
+    private Text Seats;
+
+
+    ObservableList<String> stat = FXCollections.observableArrayList("OnTime", "Delayed","Cancel");
 String qaz;
 String p="";
     /**
@@ -42,6 +67,12 @@ String p="";
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+       reach.setText(UpdateFlightWindowController.selected.getE());
+               Seats.setText(UpdateFlightWindowController.selected.getG());
+               departs.setText(UpdateFlightWindowController.selected.getD());
+               src.setText(UpdateFlightWindowController.selected.getB());dest.setText(UpdateFlightWindowController.selected.getC());Flight_id.setText(UpdateFlightWindowController.selected.getA());
+        
         Sts.setItems(stat);
          Sts.setOnAction((event) -> {
 
@@ -66,6 +97,36 @@ String p="";
                 if(qaz.equals("Delayed"))
                 {
                     p="("+"Delayed By : "+Delayed_By.getText()+")";
+                     try{        
+                    String quer = "begin delayby(?,?,?);end;";
+            CallableStatement s3;
+
+            s3 = test.con.prepareCall(quer);
+  
+           s3.setString(1,UpdateFlightWindowController.selected.getA() );
+           s3.setDate(2,java.sql.Date.valueOf(OperatorMainWindowController.date));
+           s3.setInt(3,Integer.parseInt(Delayed_By.getText()));
+           s3.executeUpdate();
+            
+                    } catch (SQLException ex) {
+                        Logger.getLogger(EditStatusController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(qaz.equals("Cancel"))
+                {
+                    try{        
+                    String quer = "begin cancel_flight(?,?);end;";
+            CallableStatement s3;
+
+            s3 = test.con.prepareCall(quer);
+  
+           s3.setString(1,UpdateFlightWindowController.selected.getA() );
+           s3.setDate(2,java.sql.Date.valueOf(OperatorMainWindowController.date));
+           s3.executeUpdate();
+            
+                    } catch (SQLException ex) {
+                        Logger.getLogger(EditStatusController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 Data2 previous;
                 previous=UpdateFlightWindowController.selected;

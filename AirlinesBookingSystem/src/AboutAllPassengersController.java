@@ -10,8 +10,10 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 import javafx.collections.FXCollections;
@@ -92,7 +94,7 @@ public class AboutAllPassengersController implements Initializable {
 
     @FXML
     private Text ArrivalText;
-String Gen1,Gen2,Gen3,Gen4,Gen5;
+String Gen1="No",Gen2="No",Gen3="No",Gen4="No",Gen5="No";
   public static String FlightId;   
   public static String PNR;
   public static int FARE;
@@ -110,6 +112,19 @@ String Gen1,Gen2,Gen3,Gen4,Gen5;
         FromText.setText(HomePageWindowController.From_value);
         ToText.setText(HomePageWindowController.To_value);
 
+Name1.setText(null);
+Name2.setText(null);
+Name3.setText(null);
+Name4.setText(null);
+Name5.setText(null);
+Age1.setText("-1");
+Age2.setText("-1");
+Age3.setText("-1");
+Age4.setText("-1");
+Age5.setText("-1");
+
+        
+        
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         String datestring = dateFormat.format(HomePageWindowController.date);
@@ -120,6 +135,8 @@ String Gen1,Gen2,Gen3,Gen4,Gen5;
         Gender3.setItems(Genderr);
         Gender4.setItems(Genderr);
         Gender5.setItems(Genderr);
+       
+
         Gender1.setOnAction((event) -> {
 
             Gen1= Gender1.getSelectionModel().getSelectedItem();
@@ -148,6 +165,8 @@ String Gen1,Gen2,Gen3,Gen4,Gen5;
             Name1.setVisible(true);
             Age1.setVisible(true);
             Gender1.setVisible(true);
+            Age1.setText(null);
+           
             
         }
          if(HomePageWindowController.passenger>1)
@@ -155,6 +174,8 @@ String Gen1,Gen2,Gen3,Gen4,Gen5;
                Name2.setVisible(true);
             Age2.setVisible(true);
             Gender2.setVisible(true);
+            Age2.setText(null);
+            
             
         }
           if(HomePageWindowController.passenger>2)
@@ -162,6 +183,8 @@ String Gen1,Gen2,Gen3,Gen4,Gen5;
                Name3.setVisible(true);
             Age3.setVisible(true);
             Gender3.setVisible(true);
+            Age3.setText(null);
+            
             
         }
            if(HomePageWindowController.passenger>3)
@@ -169,6 +192,8 @@ String Gen1,Gen2,Gen3,Gen4,Gen5;
                Name4.setVisible(true);
             Age4.setVisible(true);
             Gender4.setVisible(true);
+            Age4.setText(null);
+      
             
         }
             if(HomePageWindowController.passenger>4)
@@ -176,6 +201,8 @@ String Gen1,Gen2,Gen3,Gen4,Gen5;
                Name5.setVisible(true);
             Age5.setVisible(true);
             Gender5.setVisible(true);
+            Age5.setText(null);
+          
         }
         
         
@@ -208,6 +235,43 @@ String Gen1,Gen2,Gen3,Gen4,Gen5;
             java.math.BigDecimal x=(java.math.BigDecimal)s3.getObject(6);
             PNR=x.toString();
             System.out.println(PNR);
+
+String n1=Name1.getText();
+String n2 =Name2.getText();
+String n3=Name3.getText();
+String n4=Name4.getText();
+String n5=Name5.getText();
+String a1=Age1.getText();
+String a2=Age2.getText();
+String a3=Age3.getText();
+String a4=Age4.getText();
+String a5=Age5.getText();
+
+
+            String query="insert into details_of_person_booked values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            
+            PreparedStatement stat;
+
+
+            stat = test.con.prepareStatement(query);
+            stat.setString(1,PNR);
+             stat.setString(2,n1);
+              stat.setInt(3,Integer.parseInt(a1));
+              //System.out.println(Gen1.substring(0, 1));
+               stat.setString(4,Gen1.substring(0,1));
+                            stat.setString(5,n2);
+              stat.setInt(6,Integer.parseInt(a2));
+               stat.setString(7,Gen2.substring(0, 1));
+                            stat.setString(8,n3);
+              stat.setInt(9,Integer.parseInt(a3));
+               stat.setString(10,Gen3.substring(0, 1));
+                            stat.setString(11,n4);
+              stat.setInt(12,Integer.parseInt(a4));
+               stat.setString(13,Gen4.substring(0, 1));
+                            stat.setString(14,n5);
+              stat.setInt(15,Integer.parseInt(a5));
+               stat.setString(16,Gen5.substring(0, 1));
+            stat.executeUpdate();
 
                     
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FinalBookingInfo.fxml"));

@@ -18,13 +18,19 @@ public class Data3 {
     public final SimpleStringProperty c;
     public final SimpleStringProperty d;
     public final SimpleStringProperty e;
+     public final SimpleStringProperty f;
+      public final SimpleStringProperty g;
+       public final SimpleStringProperty h;
 
-    public Data3(String a, String b, String c, String d, String e) {
+    public Data3(String a, String b, String c, String d, String e,String f,String g,String h) {
         this.a = new SimpleStringProperty(a);
         this.b = new SimpleStringProperty(b);
         this.c = new SimpleStringProperty(c);
         this.d = new SimpleStringProperty(d);
         this.e = new SimpleStringProperty(e);
+          this.f = new SimpleStringProperty(f);
+            this.g = new SimpleStringProperty(g);
+              this.h = new SimpleStringProperty(h);
     }
 
     public String getA() {
@@ -66,5 +72,33 @@ public class Data3 {
     public void setE(String fName) {
         e.set(fName);
     }
+    
 
+    public String getF() {
+        return f.get();
+    }
+
+    public void setF(String fName) {
+        f.set(fName);
+    }
+    
+    
+    public String getG() {
+        return g.get();
+    }
+
+    public void setG(String fName) {
+        g.set(fName);
+    }
+    
+    
+    public String getH() {
+        return h.get();
+    }
+
+    public void setH(String fName) {
+        h.set(fName);
+    }
+    
+    
 }

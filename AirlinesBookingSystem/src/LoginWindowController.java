@@ -5,6 +5,7 @@
  */
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.DriverManager;
@@ -33,8 +34,8 @@ public class LoginWindowController implements Initializable {
 
     @FXML
     private JFXTextField UsernameTextField;
-    @FXML
-    private JFXTextField PasswordTextField;
+        @FXML
+    private JFXPasswordField PasswordTextField;
     @FXML
     private JFXButton SignInButton;
     @FXML
@@ -94,6 +95,7 @@ public class LoginWindowController implements Initializable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                try{
                 if (r1.next()) {
                     
                     String s = r1.getString("PASSWORD");
@@ -101,7 +103,24 @@ public class LoginWindowController implements Initializable {
                     if (s.equalsIgnoreCase(passwordData)) {
                         log = true;
                     }
+                    /*else
+                    {
+                    warningText.setText("*Username or Password is incorrect");
+                    PasswordTextField.setText("");
+                    UsernameTextField.setText("");
+                    }/*/
                 }
+                else
+                {
+                     warningText.setText("*Username or Password is incorrect");
+                    PasswordTextField.setText("");
+                    UsernameTextField.setText("");
+                }
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+                
                 if (log == true) {
                     try {
                         
@@ -128,8 +147,9 @@ public class LoginWindowController implements Initializable {
                     UsernameTextField.setText("");
                 }
 
-            }   catch (SQLException ex) {
-                    Logger.getLogger(LoginWindowController.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+                catch (Exception e) {
+                    e.printStackTrace();
                 }
 
                     

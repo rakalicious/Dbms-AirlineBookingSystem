@@ -12,6 +12,9 @@ import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -48,8 +51,10 @@ import oracle.jdbc.OracleTypes;
  */
 public class UpdateFlightWindowController implements Initializable {
 
-    @FXML
-    private JFXButton BackButton;
+      @FXML
+    private JFXButton HomeButton;
+          @FXML
+    private Text Date;
     @FXML
     private JFXButton AppplyChangesButton;
     @FXML
@@ -88,7 +93,11 @@ public static Data2 selected;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        lst.clear();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        String datestring = dateFormat.format(java.sql.Date.valueOf(OperatorMainWindowController.date));
+        Date.setText(datestring);
         
 TableFlights.getSelectionModel().selectedItemProperty().addListener(new ChangeListener< Data2>() {
     @Override
@@ -119,11 +128,12 @@ TableFlights.getSelectionModel().selectedItemProperty().addListener(new ChangeLi
 
         try {
 
-            String quer = "select f.flight_id,f.src,f.dest,f.departure,f.arrival,t.status from (select * from flight_schedule where day = ?) f \n"
-                    + "left outer join (\n"
-                    + "	select s.flight_id as flight_id, s.status as Status from current_runnning_status s \n"
-                    + "	where dt = ?\n"
-                    + ") t on f.flight_id = t.flight_id";
+
+            String quer="select f.flight_id,f.src,f.dest,f.departure,f.arrival,t.status,to_char(t.Delayed,'0000') from (select * from flight_schedule where day = ?) f \n" +
+"left outer join (\n" +
+"	select s.flight_id as flight_id, s.status as Status,s.delayduration as Delayed from current_runnning_status s \n" +
+"	where dt = ?\n" +
+") t on f.flight_id = t.flight_id";
             PreparedStatement s3;
            Calendar ccc = Calendar.getInstance();
                 ccc.setTime(java.sql.Date.valueOf(OperatorMainWindowController.date));
@@ -149,6 +159,10 @@ TableFlights.getSelectionModel().selectedItemProperty().addListener(new ChangeLi
                 if (rs.wasNull()) {
                     g = "ON TIME";
                 }
+                if(!g.equals("ON TIME")){
+                String t=rs.getString(7);
+                
+                g=g+"(Delayed by "+t+" hh:mm)";}
          
             String query = "begin find_seats(?,?,?);end;";
             CallableStatement s;
@@ -204,6 +218,29 @@ System.out.println(x);
             }
                 
                 
+            }
+        });
+                HomeButton.setOnAction(new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent event) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OperatorMainWindow.fxml"));
+                    Parent root1 = (Parent) fxmlLoader.load();
+                    root1.setId("paneSignUp");
+                    Stage stage4 = new Stage();
+                    stage4.resizableProperty().setValue(Boolean.FALSE);
+                    //stage4.getIcons().add(new Image("ico.png"));
+                    stage4.setTitle("SignUp");
+                    Scene scene = new Scene(root1);
+                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                    stage4.setScene(scene);
+                    stage4.show();
+                    Stage stage5;
+                    stage5 = (Stage) HomeButton.getScene().getWindow();
+                    stage5.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         
