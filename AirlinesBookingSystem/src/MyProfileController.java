@@ -35,33 +35,26 @@ import javafx.stage.Stage;
  * @author vips
  */
 public class MyProfileController implements Initializable {
-
     @FXML
     private Text Username_Text;
-    @FXML
-    private JFXTextField House_field;
-    @FXML
-    private JFXTextField Locality_field;
-    @FXML
-    private JFXTextField City_field;
-    @FXML
-    private JFXTextField State_field;
-    @FXML
-    private JFXTextField Pin_field;
+
     @FXML
     private JFXButton Save_Changes_Field;
+
     @FXML
     private JFXTextField Mobile_Field;
+
     @FXML
     private Text Name_Field;
+
     @FXML
     private Text Dob_Field;
+
     @FXML
     private Text Email_Field;
+
     @FXML
     private Text Nationality_Field;
-    @FXML
-    private JFXTextField Country_Field;
 
     @FXML
     private JFXPasswordField Cur_Pass_Field;
@@ -70,12 +63,27 @@ public class MyProfileController implements Initializable {
     private JFXPasswordField New_Pass_Field;
 
     @FXML
-    private Text Warning_pass_text;
-    @FXML
     private JFXPasswordField Confirm_Pass_Field;
+
+    @FXML
+    private Text Warning_pass_text;
+
+    @FXML
+    private JFXTextField Address_Line1;
+
+    @FXML
+    private JFXTextField Address_Line2;
+
+    @FXML
+    private JFXTextField Address_Line3;
+
+    
+    
     ResultSet r1, r2;
     PreparedStatement st, st1;
     PreparedStatement stt;
+  
+
 
     /**
      * Initializes the controller class.
@@ -94,20 +102,24 @@ public class MyProfileController implements Initializable {
             if (r1.next()) {
 
                 String stringToParse = r1.getString("Address");
+                System.out.println(stringToParse);
                 StringTokenizer st = new StringTokenizer(stringToParse, "|");
                 //System.out.println("gvg");
                 Username_Text.setText(r1.getString("username"));
-                House_field.setText(st.nextToken());
-                Locality_field.setText(st.nextToken());
-                City_field.setText(st.nextToken());
-                State_field.setText(st.nextToken());
+
                 Mobile_Field.setText(r1.getString("Mobile"));
                 Name_Field.setText(r1.getString("First_Name") + r1.getString("LAST_NAME"));
                 DateFormat df = new SimpleDateFormat("dd/MM/yyyy");;
                 Dob_Field.setText(df.format(r1.getDate("DOB")));
-                Country_Field.setText(st.nextToken());
-                Pin_field.setText(st.nextToken());
+               
                 Email_Field.setText(r1.getString("Email"));
+                String One,Two,Three;
+                One=st.nextToken();
+                Two=st.nextToken();
+                Three=st.nextToken();
+              Address_Line1.setText(One);
+                Address_Line2.setText(Two);
+               Address_Line3.setText(Three);
 
             }
 
@@ -127,7 +139,7 @@ public class MyProfileController implements Initializable {
 
                     r2 = stmtt.executeQuery(sss);
 
-                    String Addr = House_field.getText() + "|" + Locality_field.getText() + "|" + City_field.getText() + "|" + State_field.getText() + "|" + Country_Field.getText() + "|" + Pin_field.getText();
+                    String Addr = Address_Line1.getText()+ "|" + Address_Line2.getText() + "|" + Address_Line3.getText() ;
                     r1.updateString("Address", Addr);
                     r1.updateLong(6, Long.parseLong(Mobile_Field.getText()));
                     r1.updateRow();

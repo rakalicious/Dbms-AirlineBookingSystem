@@ -38,11 +38,8 @@ import javafx.stage.Stage;
  */
 public class SignUpWindowController implements Initializable {
 
-    @FXML
+   @FXML
     private AnchorPane SignUpWindowPane;
-
-    @FXML
-    private JFXPasswordField PasswordTextField;
 
     @FXML
     private JFXButton CheckAvailabilityButton;
@@ -52,6 +49,9 @@ public class SignUpWindowController implements Initializable {
 
     @FXML
     private JFXButton BackButton;
+
+    @FXML
+    private JFXPasswordField PasswordTextField;
 
     @FXML
     private JFXPasswordField ConfirmPasswordTextField;
@@ -78,24 +78,17 @@ public class SignUpWindowController implements Initializable {
     private JFXTextField MobileNoTextField;
 
     @FXML
-    private JFXTextField HouseTextField;
-
-    @FXML
-    private JFXTextField LocalityTextField;
-
-    @FXML
-    private JFXTextField CityTextField;
-
-    @FXML
-    private JFXTextField StateTextField;
-
-    @FXML
-    private JFXTextField CountryTextField;
-
-    @FXML
-    private JFXTextField PinCodeTextField;
-    @FXML
     private JFXDatePicker Date_Field;
+
+    @FXML
+    private JFXTextField Address_Line1;
+
+    @FXML
+    private JFXTextField Address_Line2;
+
+    @FXML
+    private JFXTextField Address_Line3;
+
     String insertTableSQL = "INSERT INTO login_record " + " VALUES" + "(?,?)";
     ResultSet r1;
     String insertTableSQL2 = "INSERT INTO user_details " + " VALUES" + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -149,12 +142,7 @@ public class SignUpWindowController implements Initializable {
                 String firstNameData = FirstNameTextField.getText();
                 String Adhar = AadharNoTextField.getText();
                 String nationality = NationalityTextField.getText();
-                String House = HouseTextField.getText();
-                String Locality = LocalityTextField.getText();
-                String City = CityTextField.getText();
-                String State = StateTextField.getText();
-                String Country = CountryTextField.getText();
-                String PinCode = PinCodeTextField.getText();
+
                 String Mobile = MobileNoTextField.getText();
                 LocalDate date = Date_Field.getValue();
 
@@ -174,11 +162,11 @@ public class SignUpWindowController implements Initializable {
                 }
 
                 try {
-                    if (!r1.next() && !User.equals("") && !Locality.equals("") && !City.equals("") && !State.equals("") && !Country.equals("") && !nationality.equals("") && !Email.equals("") && !Mobile.equals("") && !Adhar.equals("") && passwordData.equals(cpasswordData) && !passwordData.equals("") && !cpasswordData.equals("") && !firstNameData.equals("") && !lastNameData.equals("")) {
+                    if (!r1.next() && !User.equals("")&&!Address_Line1.getText().equals("")&&!Address_Line2.getText().equals("")&&!Address_Line3.getText().equals("")  && !nationality.equals("") && !Email.equals("") && !Mobile.equals("") && !Adhar.equals("") && passwordData.equals(cpasswordData) && !passwordData.equals("") && !cpasswordData.equals("") && !firstNameData.equals("") && !lastNameData.equals("")) {
 
                         
                         CallableStatement s2;
-                        String Addr = House + "|" + Locality + "|" + City + "|" + State + "|" + Country + "|" + PinCode;
+                    String Addr = Address_Line1.getText()+ "|" + Address_Line2.getText() + "|" + Address_Line3.getText() ;
                         String quer = "begin insert_user(?,?,?,?,?,?,?,?,?);end;";
 
                         s2 = test.con.prepareCall(quer);
