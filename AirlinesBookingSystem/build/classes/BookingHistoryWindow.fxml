@@ -3,6 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -14,11 +16,6 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <JFXButton fx:id="BackButon" layoutX="628.0" layoutY="20.0" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: Brown;" text="Back" textFill="#f8f5f5">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </JFXButton>
       <TableView fx:id="BookingHistoryTable" editable="true" layoutX="6.0" layoutY="67.0" prefHeight="373.0" prefWidth="748.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="67.0">
          <columns>
             <TableColumn fx:id="PNRColumn" prefWidth="113.0" text="PNR No." />
@@ -30,5 +27,14 @@
             <TableColumn fx:id="StatusColumn" prefWidth="106.0" text="Status" />
          </columns>
       </TableView>
+      <JFXButton fx:id="Home_Botton" layoutX="618.0" layoutY="17.0" text="Home">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@home.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

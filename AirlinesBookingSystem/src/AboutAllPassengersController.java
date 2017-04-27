@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.sql.CallableStatement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
@@ -23,6 +24,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import oracle.jdbc.OracleTypes;
 
 /**
  * FXML Controller class
@@ -176,13 +178,27 @@ String Gen1,Gen2,Gen3,Gen4,Gen5;
 
             public void handle(ActionEvent event) {
                 try {
+                    
+                                String quer = "begin ticketbooking(?,?,?,?,?);end;";
+                                
+            CallableStatement s3;
+            
+            s3 = test.con.prepareCall(quer);
+          //  s3.setString(1,TicketAvailabilityWindowController.neww.);
+            s3.setString(2, "");
+            s3.setDate(3, java.sql.Date.valueOf("2017-05-01"));
+            s3.setInt(4,0);
+            s3.setInt(5, 0);
+            System.out.println();
+            s3.executeUpdate();
+                    
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FinalBookingInfo.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
                     root1.setId("paneSignUp");
                     Stage stage4 = new Stage();
                     stage4.resizableProperty().setValue(Boolean.FALSE);
                     //stage4.getIcons().add(new Image("ico.png"));
-                    stage4.setTitle("SignUp");
+                    stage4.setTitle("FinalBookingInfo");
                     Scene scene = new Scene(root1);
                     //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
                     stage4.setScene(scene);
@@ -199,3 +215,16 @@ String Gen1,Gen2,Gen3,Gen4,Gen5;
     }
 
 }
+
+
+/*
+
+create or replace procedure ticketbooking(
+	flightid IN varchar2,
+	date IN DATE,
+	requestedSeats IN number,
+	usrname IN varchar2,
+	faretaken IN number
+
+
+*/

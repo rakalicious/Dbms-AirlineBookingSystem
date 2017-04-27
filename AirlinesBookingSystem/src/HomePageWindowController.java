@@ -221,7 +221,75 @@ public class HomePageWindowController implements Initializable {
                 
                 
             }});
-                 }
+            Booking_History_Link.setOnAction(new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent event) {
+                
+                try{
+                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BookingHistoryWindow.fxml"));
+                    Parent root1;
+
+                    root1 = (Parent) fxmlLoader.load();
+
+                    root1.setId("pane");
+                    Stage stage4 = new Stage();
+                    stage4.resizableProperty().setValue(Boolean.FALSE);
+                    stage4.setTitle("BookingHistory");
+                    Scene scene = new Scene(root1);
+                                scene.getStylesheets().addAll(this.getClass().getResource("x.css").toExternalForm());
+
+                    stage4.setScene(scene);
+                    stage4.show();
+                    Stage stage5;
+                    stage5 = (Stage) LogOut_Botton.getScene().getWindow();
+                    stage5.close();
+                
+                
+                } catch (IOException ex) {
+                    Logger.getLogger(HomePageWindowController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+                
+                
+            }});
+                        Cancel_Ticket_Link.setOnAction(new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent event) {
+                
+                try{
+                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Cancel_Ticket_Window.fxml"));
+                    Parent root1;
+
+                    root1 = (Parent) fxmlLoader.load();
+
+                    root1.setId("pane");
+                    Stage stage4 = new Stage();
+                    stage4.resizableProperty().setValue(Boolean.FALSE);
+                    stage4.setTitle("Cancel_Ticket_Link");
+                    Scene scene = new Scene(root1);
+                                scene.getStylesheets().addAll(this.getClass().getResource("x.css").toExternalForm());
+
+                    stage4.setScene(scene);
+                    stage4.show();
+                    Stage stage5;
+                    stage5 = (Stage) LogOut_Botton.getScene().getWindow();
+                    stage5.close();
+                
+                
+                } catch (IOException ex) {
+                    Logger.getLogger(HomePageWindowController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+                
+                
+            }});
+            
+            
+    
+    
+    }
 
     
 
