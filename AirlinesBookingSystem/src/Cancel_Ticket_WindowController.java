@@ -68,6 +68,7 @@ public class Cancel_Ticket_WindowController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        lst.clear();
 
         CancelTicketTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener< Data5>() {
             @Override
@@ -138,10 +139,12 @@ public class Cancel_Ticket_WindowController implements Initializable {
                     s3 = test.con.prepareCall(quer);
                     s3.setString(1, selected.getA());
                     s3.registerOutParameter(2, OracleTypes.NUMBER);
+                    s3.execute();
+                    java.math.BigDecimal bd= s3.getBigDecimal(2);
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Ticket Cancelled");
                     alert.setHeaderText("Ticket Cancelled");
-                    alert.setContentText("your Ticket has been Cancelled!");
+                    alert.setContentText("Your Ticket has been Cancelled!"+" Refund is "+bd.toString());
 
                     alert.showAndWait();
                     lst.remove(selected);
