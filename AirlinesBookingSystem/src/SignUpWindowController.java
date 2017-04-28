@@ -30,6 +30,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -40,6 +43,8 @@ public class SignUpWindowController implements Initializable {
 
    @FXML
     private AnchorPane SignUpWindowPane;
+       @FXML
+    private Text Warning_Text;
 
     @FXML
     private JFXButton CheckAvailabilityButton;
@@ -184,21 +189,27 @@ public class SignUpWindowController implements Initializable {
 
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GeneralLoginWindow.fxml"));
                         Parent root1 = (Parent) fxmlLoader.load();
-                        root1.setId("paneLogin");
+                        root1.setId("paneGeneralLogin");
                         Stage stage4 = new Stage();
                         stage4.resizableProperty().setValue(Boolean.FALSE);
                         //stage4.getIcons().add(new Image("ico.png"));
                         stage4.setTitle("Login");
                         Scene scene = new Scene(root1);
-                        //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                        scene.getStylesheets().addAll(this.getClass().getResource("GeneralLogin.css").toExternalForm());
                         stage4.setScene(scene);
                         stage4.show();
+                        TrayNotification tray=new TrayNotification();
+                        tray.setTitle("Success");
+                        tray.setMessage("Account Created ");
+                        tray.setNotificationType(NotificationType.SUCCESS);
+                        tray.showAndDismiss(Duration.millis(2000));
                         Stage stage5;
                         stage5 = (Stage) SignUpButton.getScene().getWindow();
                         stage5.close();
 
                     } else {
-                        System.out.println("ni hua");
+                           
+                    Warning_Text.setText("Invalid Credentials");
                     }
 
                 } catch (SQLException ex) {
@@ -222,7 +233,7 @@ public class SignUpWindowController implements Initializable {
                     //stage4.getIcons().add(new Image("ico.png"));
                     stage4.setTitle("Login");
                     Scene scene = new Scene(root1);
-                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                    scene.getStylesheets().addAll(this.getClass().getResource("GeneralLogin.css").toExternalForm());
                     stage4.setScene(scene);
                     stage4.show();
                     Stage stage5;

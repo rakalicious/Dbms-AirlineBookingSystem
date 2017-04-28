@@ -31,6 +31,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -71,13 +74,13 @@ public class GeneralLoginWindowController implements Initializable {
                  try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginWindow.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
-                    root1.setId("paneSignUp");
+                    root1.setId("paneLogin");
                     Stage stage4 = new Stage();
                     stage4.resizableProperty().setValue(Boolean.FALSE);
                     //stage4.getIcons().add(new Image("ico.png"));
-                    stage4.setTitle("SignUp");
+                    stage4.setTitle("Login");
                     Scene scene = new Scene(root1);
-                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                    scene.getStylesheets().addAll(this.getClass().getResource("Login.css").toExternalForm());
                     stage4.setScene(scene);
                     stage4.show();
                     Stage stage5;
@@ -110,7 +113,7 @@ public class GeneralLoginWindowController implements Initializable {
                     //stage4.getIcons().add(new Image("ico.png"));
                     stage4.setTitle("SignUp");
                     Scene scene = new Scene(root1);
-                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                    scene.getStylesheets().addAll(this.getClass().getResource("SignUp.css").toExternalForm());
                     stage4.setScene(scene);
                     stage4.show();
                     Stage stage5;
@@ -159,9 +162,14 @@ public class GeneralLoginWindowController implements Initializable {
                             //stage4.getIcons().add(new Image("ico.png"));
                             stage4.setTitle("Home Page");
                             Scene scene = new Scene(root1);
-                            //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                            scene.getStylesheets().addAll(this.getClass().getResource("HomePage.css").toExternalForm());
                             stage4.setScene(scene);
                             stage4.show();
+                            TrayNotification tray=new TrayNotification();
+                        tray.setTitle("Success");
+                        tray.setMessage("Logged In ");
+                        tray.setNotificationType(NotificationType.SUCCESS);
+                        tray.showAndDismiss(Duration.millis(2000));
                             Stage stage5;
                             stage5 = (Stage) SignUpButton.getScene().getWindow();
                             stage5.close();

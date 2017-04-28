@@ -80,7 +80,7 @@ public class Data4 {
     }
     
     public String getG() {
-        return f.get();
+        return g.get();
     }
 
     public void setG(String fName) {

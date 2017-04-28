@@ -44,7 +44,7 @@ import oracle.jdbc.OracleTypes;
  *
  * @author vips
  */
-public class TicketAvailabilityWindowController implements Initializable  {
+public class TicketAvailabilityWindowController implements Initializable {
 
     @FXML
     private JFXButton MyProfileButton;
@@ -76,9 +76,9 @@ public class TicketAvailabilityWindowController implements Initializable  {
     private TableColumn<Data, String> FareColumn;
     @FXML
     private TableColumn<Data, String> DurationColumn;
-        @FXML
+    @FXML
     private Text Warning;
-            @FXML
+    @FXML
     private JFXButton Home_Botton;
 
     ObservableList<Data> lst = FXCollections.observableArrayList();
@@ -86,7 +86,6 @@ public class TicketAvailabilityWindowController implements Initializable  {
     java.sql.Date sqlDate;
     public static Data neww;
     Data old;
-    
 
     /**
      * Initializes th controller class..
@@ -94,7 +93,7 @@ public class TicketAvailabilityWindowController implements Initializable  {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        Codes = new HashMap<String,String>();
+        Codes = new HashMap<String, String>();
         Codes.put("Delhi", "DEL");
         Codes.put("Mumbai", "BOM");
         Codes.put("Jaipur", "JAI");
@@ -105,9 +104,9 @@ public class TicketAvailabilityWindowController implements Initializable  {
         Codes.put("Chennai", "MAA");
         Codes.put("Pune", "PNQ");
         Codes.put("Hyderabad", "HYD");
-        System.out.println("-------"+Codes.get("Delhi")+"---------------");
+        System.out.println("-------" + Codes.get("Delhi") + "---------------");
         System.out.println(HomePageWindowController.From_value);
-        System.out.println( Codes.get(HomePageWindowController.From_value));
+        System.out.println(Codes.get(HomePageWindowController.From_value));
 
         FromText.setText(HomePageWindowController.From_value);
         ToText.setText(HomePageWindowController.To_value);
@@ -125,23 +124,19 @@ public class TicketAvailabilityWindowController implements Initializable  {
         FareColumn.setCellValueFactory(new PropertyValueFactory<Data, String>("d"));
         DurationColumn.setCellValueFactory(new PropertyValueFactory<Data, String>("e"));
 
-       try{ 
-        String d1="01-05-2017";
-        SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
-        
-        java.util.Date dt1 = sdf1.parse(d1);
-        sqlDate = new Date(dt1.getTime());
-        
-        
-        
-       } catch (ParseException ex) {
+        try {
+            String d1 = "01-05-2017";
+            SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+
+            java.util.Date dt1 = sdf1.parse(d1);
+            sqlDate = new Date(dt1.getTime());
+
+        } catch (ParseException ex) {
             Logger.getLogger(TicketAvailabilityWindowController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
+
         try {
-                System.out.println("fvsdgv");
+            System.out.println("fvsdgv");
 
             String quer = "begin get_all_flights(?,?,?,?,?,?);end;";
             CallableStatement s3;
@@ -155,38 +150,41 @@ public class TicketAvailabilityWindowController implements Initializable  {
             s3.registerOutParameter(6, OracleTypes.CURSOR);
             System.out.println();
             s3.executeUpdate();
-            System.out.println(Codes.get(HomePageWindowController.From_value)+" "+Codes.get(HomePageWindowController.To_value)+" "+java.sql.Date.valueOf("2017-05-01")+" "+ HomePageWindowController.day+" "+HomePageWindowController.passenger);
+            System.out.println(Codes.get(HomePageWindowController.From_value) + " " + Codes.get(HomePageWindowController.To_value) + " " + java.sql.Date.valueOf("2017-05-01") + " " + HomePageWindowController.day + " " + HomePageWindowController.passenger);
 
-            ResultSet rs = (ResultSet)s3.getObject(6);
-            Random r=new Random();
-           int flag=0;
+            ResultSet rs = (ResultSet) s3.getObject(6);
+            Random r = new Random();
+            int flag = 0;
             while (rs.next()) {
                 System.out.println("fvsdg8989v");
-                flag=1;
+                flag = 1;
 
-                
                 String a, b, c, d, e;
                 a = rs.getString(1);
                 b = rs.getString(2);
                 c = rs.getString(3);
                 d = rs.getString(4);
-                e = Integer.toString(rs.getInt(5));
-                String x=a+"("+b+")";
-                int xxxx= Integer.parseInt(c) - Integer.parseInt(d);
-                
-                int qqqq=Math.abs(xxxx);
-                String w=Integer.toString(qqqq);
-                Data qq = new Data(x,c, d, e,w);
-                System.out.println(x+c+d+e+w);
+                int xx=rs.getInt(5);
+                if(HomePageWindowController.Class=="Business")
+                {
+                    xx=2*xx;
+                }
+                e = Integer.toString(xx);
+                String x = a + "(" + b + ")";
+                int xxxx = Integer.parseInt(c) - Integer.parseInt(d);
+
+                int qqqq = Math.abs(xxxx);
+                String w = Integer.toString(qqqq);
+                Data qq = new Data(x, c, d, e, w);
+                System.out.println(x + c + d + e + w);
 
                 lst.add(qq);
 
             }
             PlaneTable.setItems(lst);
-            if(flag==0)
-            {
-                   
-    Warning.setText("* No Flights For Given Date .  Modify Your Search");
+            if (flag == 0) {
+
+                Warning.setText("* No Flights For Given Date .Check for another date");
             }
 
         } catch (SQLException ex) {
@@ -209,6 +207,7 @@ public class TicketAvailabilityWindowController implements Initializable  {
                     stage4.resizableProperty().setValue(Boolean.FALSE);
                     stage4.setTitle("MyProfile");
                     Scene scene = new Scene(root1);
+                    scene.getStylesheets().addAll(this.getClass().getResource("MyProfile.css").toExternalForm());
                     stage4.setScene(scene);
                     stage4.show();
                     Stage stage5;
@@ -230,12 +229,12 @@ public class TicketAvailabilityWindowController implements Initializable  {
 
                     root1 = (Parent) fxmlLoader.load();
 
-                    root1.setId("pane");
+                    root1.setId("paneGeneralLogin");
                     Stage stage4 = new Stage();
                     stage4.resizableProperty().setValue(Boolean.FALSE);
                     stage4.setTitle("Login");
                     Scene scene = new Scene(root1);
-                    scene.getStylesheets().addAll(this.getClass().getResource("x.css").toExternalForm());
+                    scene.getStylesheets().addAll(this.getClass().getResource("GeneralLogin.css").toExternalForm());
 
                     stage4.setScene(scene);
                     stage4.show();
@@ -249,23 +248,19 @@ public class TicketAvailabilityWindowController implements Initializable  {
 
             }
         });
-        
-            PlaneTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener< Data>() {
 
-                    
+        PlaneTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener< Data>() {
 
             @Override
             public void changed(ObservableValue<? extends Data> observable, Data oldValue, Data newValue) {
-                
-                neww=PlaneTable.getSelectionModel().getSelectedItem();
+
+                neww = PlaneTable.getSelectionModel().getSelectedItem();
                 System.out.println(neww.a);
                 //throw new UnsupportedOperationException("Not supported yet."); 
             }
-                });
-            
-            
-            
-             BookNowButton.setOnAction(new EventHandler<ActionEvent>() {
+        });
+
+        BookNowButton.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
 
@@ -276,11 +271,12 @@ public class TicketAvailabilityWindowController implements Initializable  {
 
                     root1 = (Parent) fxmlLoader.load();
 
-                    root1.setId("paneMyProfile");
+                    root1.setId("paneAboutAllPassengers");
                     Stage stage4 = new Stage();
                     stage4.resizableProperty().setValue(Boolean.FALSE);
-                    stage4.setTitle("MyProfile");
+                    stage4.setTitle("Detail About Passengers");
                     Scene scene = new Scene(root1);
+                    scene.getStylesheets().addAll(this.getClass().getResource("AboutAllPassengers.css").toExternalForm());
                     stage4.setScene(scene);
                     stage4.show();
                     Stage stage5;
@@ -292,10 +288,8 @@ public class TicketAvailabilityWindowController implements Initializable  {
                 }
             }
         });
-            
-            
-        
-           ModifyButton.setOnAction(new EventHandler<ActionEvent>() {
+
+        ModifyButton.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
 
@@ -306,11 +300,12 @@ public class TicketAvailabilityWindowController implements Initializable  {
 
                     root1 = (Parent) fxmlLoader.load();
 
-                    root1.setId("paneMyProfile");
+                    root1.setId("paneTicketCheckingModify");
                     Stage stage4 = new Stage();
                     stage4.resizableProperty().setValue(Boolean.FALSE);
-                    stage4.setTitle("MyProfile");
+                    stage4.setTitle("Modify your Choice");
                     Scene scene = new Scene(root1);
+                    scene.getStylesheets().addAll(this.getClass().getResource("TicketCheckingModify.css").toExternalForm());
                     stage4.setScene(scene);
                     stage4.show();
                     Stage stage5;
@@ -322,47 +317,36 @@ public class TicketAvailabilityWindowController implements Initializable  {
                 }
             }
         });
-        
-                 Home_Botton.setOnAction(new EventHandler<ActionEvent>() {
+
+        Home_Botton.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
-                
-                try{
-                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePageWindow.fxml"));
+
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePageWindow.fxml"));
                     Parent root1;
 
                     root1 = (Parent) fxmlLoader.load();
 
-                    root1.setId("pane");
+                    root1.setId("paneHomePage");
                     Stage stage4 = new Stage();
                     stage4.resizableProperty().setValue(Boolean.FALSE);
                     stage4.setTitle("Home_Botton");
                     Scene scene = new Scene(root1);
-                                scene.getStylesheets().addAll(this.getClass().getResource("x.css").toExternalForm());
+                    scene.getStylesheets().addAll(this.getClass().getResource("HomePage.css").toExternalForm());
 
                     stage4.setScene(scene);
                     stage4.show();
                     Stage stage5;
                     stage5 = (Stage) Home_Botton.getScene().getWindow();
                     stage5.close();
-                
-                
+
                 } catch (IOException ex) {
                     Logger.getLogger(HomePageWindowController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-                
-                
-                
-            }});
-        
-        
-        
-        
-        
-        
-        
-        
+
+            }
+        });
 
     }
 

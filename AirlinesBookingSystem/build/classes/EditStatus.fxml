@@ -4,10 +4,12 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="230.0" prefWidth="609.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditStatusController">
+<AnchorPane id="AnchorPane" prefHeight="259.0" prefWidth="609.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditStatusController">
    <children>
+      <AnchorPane layoutX="14.0" layoutY="8.0" opacity="0.54" prefHeight="189.0" prefWidth="584.0" style="-fx-background-color: white;" />
       <Text layoutX="22.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlightId" wrappingWidth="74.13671875" />
       <Text layoutX="213.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Source" wrappingWidth="74.13672789931297" />
       <Text layoutX="30.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departs" />
@@ -24,6 +26,9 @@
       <Text fx:id="departs" layoutX="96.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="74.13672903366387" />
       <Text fx:id="reach" layoutX="320.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="74.13672903366387" />
       <Text fx:id="Seats" layoutX="510.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="74.13672903366387" />
-      <JFXButton fx:id="Change" layoutX="465.0" layoutY="175.0" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: brown;" text="Save" textFill="#f2eded" />
+      <JFXButton fx:id="Change" blendMode="DARKEN" buttonType="RAISED" layoutX="472.0" layoutY="209.0" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: white;" text="Save" textFill="#171717">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></JFXButton>
    </children>
 </AnchorPane>

@@ -46,12 +46,13 @@ public class test extends Application {
            con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.137.1:1522:dbmsproject", USER, PASS);
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("GeneralLoginWindow.fxml"));
             primaryStage.resizableProperty().setValue(Boolean.FALSE);
-            root.setId("pane");
+            primaryStage.setTitle("Login Window");
+            root.setId("paneGeneralLogin");
             Scene scene = new Scene(root);
 
             //  primaryStage.setScene(scene);
             // Scene scene = new Scene(root);
-            scene.getStylesheets().addAll(this.getClass().getResource("x.css").toExternalForm());
+            scene.getStylesheets().addAll(this.getClass().getResource("GeneralLogin.css").toExternalForm());
             primaryStage.setScene(scene);
 
             primaryStage.show();

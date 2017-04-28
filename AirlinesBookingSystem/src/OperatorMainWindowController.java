@@ -16,8 +16,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -44,21 +47,44 @@ public static LocalDate  date;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         
+        PickDate1.getChronology().dateNow();
+        PickDate1.setValue(LocalDate.now());
+        //System.out.println(LocalDate.now());
+        final Callback<DatePicker, DateCell> dayCellFactory
+                = new Callback<DatePicker, DateCell>() {
+                    @Override
+                    public DateCell call(final DatePicker datePicker) {
+                        return new DateCell() {
+                            @Override
+                            public void updateItem(LocalDate item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (item.isBefore(LocalDate.now()
+                                        )) {
+                                    //  System.out.println("hey");
+                                    setDisable(true);
+                                    setStyle("-fx-background-color: #ffc0cb;");
+                                }
+                            }
+                        };
+                    }
+                };
+        PickDate1.setDayCellFactory(dayCellFactory);
+        // TODO
+        UsernameText.setText(LoginWindowController.userNameData);
         ChangePasswordButton.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OperatorChangePasswordWindow.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
-                    root1.setId("paneOperatorMainWindow");
+                    root1.setId("paneOperatorChangePassword");
                     Stage stage4 = new Stage();
                     stage4.resizableProperty().setValue(Boolean.FALSE);
                     //stage4.getIcons().add(new Image("ico.png"));
-                    stage4.setTitle("Operator Window");
+                    stage4.setTitle("Change Password");
                     Scene scene = new Scene(root1);
-                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                    scene.getStylesheets().addAll(this.getClass().getResource("OperatorChangePassword.css").toExternalForm());
                     stage4.setScene(scene);
                     stage4.show();
                     Stage stage5;
@@ -79,13 +105,13 @@ public static LocalDate  date;
                     date =PickDate1.getValue();
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UpdateFlightWindow.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
-                    root1.setId("paneUpdaetFlightWindow");
+                    root1.setId("paneUpdateFlight");
                     Stage stage4 = new Stage();
                     stage4.resizableProperty().setValue(Boolean.FALSE);
                     //stage4.getIcons().add(new Image("ico.png"));
-                    stage4.setTitle("UpdaetFlight Window");
+                    stage4.setTitle("Update Flight Details");
                     Scene scene = new Scene(root1);
-                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                    scene.getStylesheets().addAll(this.getClass().getResource("UpdateFlight.css").toExternalForm());
                     stage4.setScene(scene);
                     Stage stage5;
                     stage5 = (Stage) ChangePasswordButton.getScene().getWindow();
@@ -104,13 +130,13 @@ public static LocalDate  date;
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PassengerDetailWindow.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
-                    root1.setId("paneDetailPassengerWindow");
+                    root1.setId("panePassengerDetail");
                     Stage stage4 = new Stage();
                     stage4.resizableProperty().setValue(Boolean.FALSE);
                     //stage4.getIcons().add(new Image("ico.png"));
                     stage4.setTitle("Passenger Detail Window");
                     Scene scene = new Scene(root1);
-                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                    scene.getStylesheets().addAll(this.getClass().getResource("PassengerDetail.css").toExternalForm());
                     stage4.setScene(scene);
                     stage4.show();
                     Stage stage5;
@@ -121,6 +147,30 @@ public static LocalDate  date;
                 }
             }
         });
+        LogOutButton.setOnAction(new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent event) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginWindow.fxml"));
+                    Parent root1 = (Parent) fxmlLoader.load();
+                    root1.setId("paneLogin");
+                    Stage stage4 = new Stage();
+                    stage4.resizableProperty().setValue(Boolean.FALSE);
+                    //stage4.getIcons().add(new Image("ico.png"));
+                    stage4.setTitle("Operator Window");
+                    Scene scene = new Scene(root1);
+                    scene.getStylesheets().addAll(this.getClass().getResource("Login.css").toExternalForm());
+                    stage4.setScene(scene);
+                    stage4.show();
+                    Stage stage5;
+                    stage5 = (Stage) ChangePasswordButton.getScene().getWindow();
+                    stage5.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        
     }    
     
 }

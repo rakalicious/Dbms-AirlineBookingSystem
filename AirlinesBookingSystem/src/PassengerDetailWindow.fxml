@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="428.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PassengerDetailWindowController">
    <children>
-      <Text fill="#3212a8" layoutX="70.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passengers Details">
+      <Text fill="#0d0d0d" layoutX="70.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passengers Details">
          <font>
             <Font size="24.0" />
          </font>
@@ -26,9 +26,9 @@
             <TableColumn fx:id="status" prefWidth="85.0" text="Status" />
         </columns>
       </TableView>
-      <JFXButton fx:id="BackButton" layoutX="582.0" layoutY="35.0" prefHeight="30.0" prefWidth="59.0" style="-fx-background-color: brown;" text="Back" textFill="#f8f3f3">
+      <JFXButton fx:id="BackButton" blendMode="DARKEN" buttonType="RAISED" layoutX="671.0" layoutY="29.0" prefHeight="30.0" prefWidth="59.0" style="-fx-background-color: white;" text="Back" textFill="#1e1d1d">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
    </children>

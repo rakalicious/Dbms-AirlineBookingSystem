@@ -94,36 +94,30 @@ public class PassengerDetailWindowController implements Initializable {
             PreparedStatement s3;
 
             s3 = test.con.prepareCall(quer);
-            
-           
-           ResultSet rs=s3.executeQuery();
+
+            ResultSet rs = s3.executeQuery();
 
             while (rs.next()) {
-            
 
-                String a, b, c, d, e,f,g,h;
-                java.math.BigDecimal xx=rs.getBigDecimal(1);
-                java.sql.Timestamp q=rs.getTimestamp(2);
-                
-                
+                String a, b, c, d, e, f, g, h;
+                java.math.BigDecimal xx = rs.getBigDecimal(1);
+                java.sql.Timestamp q = rs.getTimestamp(2);
+
                 a = xx.toString();
                 b = q.toString();
                 c = rs.getString(3);
                 d = rs.getString(4);
-                xx=rs.getBigDecimal(5);
-                e=xx.toString();
-                  xx=rs.getBigDecimal(6);
-                f=xx.toString();
-                g=rs.getString(7);
-                java.sql.Date date=rs.getDate(8);
+                xx = rs.getBigDecimal(5);
+                e = xx.toString();
+                xx = rs.getBigDecimal(6);
+                f = xx.toString();
+                g = rs.getString(7);
+                java.sql.Date date = rs.getDate(8);
                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-       h = dateFormat.format(date);
-        
-                
-                
-              
-               Data3 qq = new Data3(a, d, c, b, f,e,h,g);
+                h = dateFormat.format(date);
+
+                Data3 qq = new Data3(a, d, c, b, f, e, h, g);
                 System.out.println();
 
                 lst.add(qq);
@@ -134,21 +128,20 @@ public class PassengerDetailWindowController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(TicketAvailabilityWindowController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-                 BackButton.setOnAction(new EventHandler<ActionEvent>() {
+
+        BackButton.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OperatorMainWindow.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
-                    root1.setId("paneSignUp");
+                    root1.setId("paneOperatorMain");
                     Stage stage4 = new Stage();
                     stage4.resizableProperty().setValue(Boolean.FALSE);
                     //stage4.getIcons().add(new Image("ico.png"));
-                    stage4.setTitle("SignUp");
+                    stage4.setTitle("Operator Main Window");
                     Scene scene = new Scene(root1);
-                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                    scene.getStylesheets().addAll(this.getClass().getResource("OperatorMain.css").toExternalForm());
                     stage4.setScene(scene);
                     stage4.show();
                     Stage stage5;
@@ -157,11 +150,9 @@ public class PassengerDetailWindowController implements Initializable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                
-                
-                
+
             }
-                 });
+        });
     }
 
 }

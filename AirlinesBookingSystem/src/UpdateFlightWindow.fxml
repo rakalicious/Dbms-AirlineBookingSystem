@@ -11,12 +11,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="558.0" prefWidth="799.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UpdateFlightWindowController">
    <children>
-      <JFXButton fx:id="AppplyChangesButton" layoutX="642.0" layoutY="506.0" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: brown;" text="Apply Changes" textFill="#eeeded" AnchorPane.rightAnchor="10.0">
+      <AnchorPane layoutX="308.0" layoutY="25.0" opacity="0.54" prefHeight="37.0" prefWidth="314.0" style="-fx-background-color: white;" />
+      <JFXButton fx:id="AppplyChangesButton" blendMode="DARKEN" buttonType="RAISED" layoutX="642.0" layoutY="506.0" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: white;" text="Apply Changes" textFill="#111010" AnchorPane.rightAnchor="10.0">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
-      <Text fill="#4e1ad0" layoutX="27.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details About Flight" wrappingWidth="242.13671875">
+      <Text fill="#070707" layoutX="27.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details About Flight" wrappingWidth="242.13671875">
          <font>
             <Font size="24.0" />
          </font>
@@ -42,8 +43,11 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <JFXButton fx:id="Edit" layoutX="71.0" layoutY="509.0" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: brown;" text="Edit" textFill="#eed3d3" />
-      <JFXButton fx:id="HomeButton" layoutX="691.0" layoutY="25.0" style="-fx-background-image: home.jpg;" text="HOME">
+      <JFXButton fx:id="Edit" blendMode="DARKEN" buttonType="RAISED" layoutX="71.0" layoutY="509.0" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: white;" text="Edit" textFill="#0a0a0a">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="HomeButton" blendMode="DARKEN" buttonType="RAISED" layoutX="691.0" layoutY="25.0" style="-fx-background-image: white;" text="HOME">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -51,6 +55,9 @@
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
       </JFXButton>
    </children>
 </AnchorPane>

@@ -28,6 +28,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -161,9 +164,14 @@ public class MyProfileController implements Initializable {
                                     //stage4.getIcons().add(new Image("ico.png"));
                                     stage4.setTitle("Home Page");
                                     Scene scene = new Scene(root1);
-                                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                                    scene.getStylesheets().addAll(this.getClass().getResource("HomePage.css").toExternalForm());
                                     stage4.setScene(scene);
                                     stage4.show();
+                                    TrayNotification tray=new TrayNotification();
+                        tray.setTitle("Success");
+                        tray.setMessage("Changes Saved ");
+                        tray.setNotificationType(NotificationType.SUCCESS);
+                        tray.showAndDismiss(Duration.millis(2000));
                                     Stage stage5;
                                     stage5 = (Stage) Save_Changes_Field.getScene().getWindow();
                                     stage5.close();
@@ -188,9 +196,14 @@ public class MyProfileController implements Initializable {
                                 //stage4.getIcons().add(new Image("ico.png"));
                                 stage4.setTitle("Home Page");
                                 Scene scene = new Scene(root1);
-                                //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                                scene.getStylesheets().addAll(this.getClass().getResource("HomePage.css").toExternalForm());
                                 stage4.setScene(scene);
                                 stage4.show();
+                                 TrayNotification tray=new TrayNotification();
+                        tray.setTitle("Success");
+                        tray.setMessage("Changes Saved ");
+                        tray.setNotificationType(NotificationType.SUCCESS);
+                        tray.showAndDismiss(Duration.millis(2000));
                                 Stage stage5;
                                 stage5 = (Stage) Save_Changes_Field.getScene().getWindow();
                                 stage5.close();

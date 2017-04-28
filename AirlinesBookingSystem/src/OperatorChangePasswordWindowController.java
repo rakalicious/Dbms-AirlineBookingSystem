@@ -55,13 +55,13 @@ public class OperatorChangePasswordWindowController implements Initializable {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OperatorMainWindow.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
-                    root1.setId("paneOpMainWindow");
+                    root1.setId("paneOperatorMain");
                     Stage stage4 = new Stage();
                     stage4.resizableProperty().setValue(Boolean.FALSE);
                     //stage4.getIcons().add(new Image("ico.png"));
                     stage4.setTitle("Main Window");
                     Scene scene = new Scene(root1);
-                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
+                    scene.getStylesheets().addAll(this.getClass().getResource("OperatorMain.css").toExternalForm());
                     stage4.setScene(scene);
                     stage4.show();
                     Stage stage5;
@@ -79,42 +79,39 @@ public class OperatorChangePasswordWindowController implements Initializable {
                 try {
                     stt = test.con.prepareStatement("update emp_login_record set password = ?" + " where emp_id ='" + LoginWindowController.userNameData + "'");
                     String sss = "select t.* from emp_login_record t where emp_id ='" + LoginWindowController.userNameData + "'";
-                                       Statement stmtt = test.con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                    Statement stmtt = test.con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
                     r1 = stmtt.executeQuery(sss);
-                    if(r1.next()){
-                    if (!OldPasswordTextField.getText().equals("")) {
-                        if (OldPasswordTextField.getText().equals(r1.getString("password")) && NewPasswordTextFild.getText().equals(ConfirmPasswordTextField.getText())) {
+                    if (r1.next()) {
+                        if (!OldPasswordTextField.getText().equals("")) {
+                            if (OldPasswordTextField.getText().equals(r1.getString("password")) && NewPasswordTextFild.getText().equals(ConfirmPasswordTextField.getText())) {
 
-                            stt.setString(1, NewPasswordTextFild.getText());
-                            stt.executeUpdate();
-                            
-                            
-                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OperatorMainWindow.fxml"));
-                    Parent root1 = (Parent) fxmlLoader.load();
-                    root1.setId("paneOpMainWindow");
-                    Stage stage4 = new Stage();
-                    stage4.resizableProperty().setValue(Boolean.FALSE);
-                    //stage4.getIcons().add(new Image("ico.png"));
-                    stage4.setTitle("Main Window");
-                    Scene scene = new Scene(root1);
-                    //scene.getStylesheets().addAll(this.getClass().getResource("styleChatRoom.css").toExternalForm());
-                    stage4.setScene(scene);
-                    stage4.show();
-                    Stage stage5;
-                    stage5 = (Stage) BackButton.getScene().getWindow();
-                    stage5.close();
-                        }
-                    else
-                        {
-                            OldPasswordTextField.setText("");
+                                stt.setString(1, NewPasswordTextFild.getText());
+                                stt.executeUpdate();
+
+                                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OperatorMainWindow.fxml"));
+                                Parent root1 = (Parent) fxmlLoader.load();
+                                root1.setId("paneOperatorMain");
+                                Stage stage4 = new Stage();
+                                stage4.resizableProperty().setValue(Boolean.FALSE);
+                                //stage4.getIcons().add(new Image("ico.png"));
+                                stage4.setTitle("Main Window");
+                                Scene scene = new Scene(root1);
+                                scene.getStylesheets().addAll(this.getClass().getResource("OperatorMain.css").toExternalForm());
+                                stage4.setScene(scene);
+                                stage4.show();
+                                Stage stage5;
+                                stage5 = (Stage) BackButton.getScene().getWindow();
+                                stage5.close();
+                            } else {
+                                OldPasswordTextField.setText("");
                                 NewPasswordTextFild.setText("");
                                 ConfirmPasswordTextField.setText("");
                                 WarningText.setText("Password Doesn't Match");
+                            }
                         }
                     }
-                    }
-                    
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

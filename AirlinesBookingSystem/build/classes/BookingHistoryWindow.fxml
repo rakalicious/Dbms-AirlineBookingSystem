@@ -27,7 +27,7 @@
             <TableColumn fx:id="StatusColumn" prefWidth="106.0" text="Status" />
          </columns>
       </TableView>
-      <JFXButton fx:id="Home_Botton" layoutX="618.0" layoutY="17.0" text="Home">
+      <JFXButton fx:id="Home_Botton" blendMode="DARKEN" buttonType="RAISED" layoutX="618.0" layoutY="17.0" style="-fx-background-color: white;" text="Home">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
