@@ -180,10 +180,11 @@ public class HomePageWindowController implements Initializable {
 
                 } catch (SQLException ex) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Invalid PNR");
+                    alert.setTitle("Invali PNR");
                     alert.setHeaderText("Invalid PNR");
                     alert.setContentText("Please input valid pnr");
                                         alert.showAndWait();
+
                 }
 
             }

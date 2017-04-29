@@ -111,7 +111,7 @@ public class MyProfileController implements Initializable {
                 Username_Text.setText(r1.getString("username"));
 
                 Mobile_Field.setText(r1.getString("Mobile"));
-                Name_Field.setText(r1.getString("First_Name") + r1.getString("LAST_NAME"));
+                Name_Field.setText(r1.getString("First_Name")+" " + r1.getString("LAST_NAME"));
                 DateFormat df = new SimpleDateFormat("dd/MM/yyyy");;
                 Dob_Field.setText(df.format(r1.getDate("DOB")));
                

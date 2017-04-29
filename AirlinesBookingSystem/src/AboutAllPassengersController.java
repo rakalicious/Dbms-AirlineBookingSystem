@@ -213,9 +213,21 @@ public class AboutAllPassengersController implements Initializable {
                     System.out.println(s.nextToken());
                     String p = s.nextToken();
                     FlightId = p.substring(0, p.length() - 1);
+                     s3.setString(1, FlightId);
+                    s3.setDate(2, HomePageWindowController.date);
+                    s3.setInt(3, HomePageWindowController.passenger);
+                    s3.setString(4, GeneralLoginWindowController.userNameData);
+                    FARE = (HomePageWindowController.passenger) * (Integer.parseInt(TicketAvailabilityWindowController.neww.getD()));
+                    s3.setInt(5, FARE);
+                    System.out.println();
+                    s3.registerOutParameter(6, OracleTypes.NUMBER);
+
+                    s3.executeUpdate();
+                    java.math.BigDecimal x = (java.math.BigDecimal) s3.getObject(6);
+                    PNR = x.toString();
                     
 
-                    System.out.println(PNR);
+
 
                     String n1 = Name1.getText();
                     String n2 = Name2.getText();
@@ -227,7 +239,8 @@ public class AboutAllPassengersController implements Initializable {
                     String a3 = Age3.getText();
                     String a4 = Age4.getText();
                     String a5 = Age5.getText();
-
+                    
+                  
                     String query = "insert into details_of_person_booked values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
                     PreparedStatement stat;
@@ -263,24 +276,13 @@ public class AboutAllPassengersController implements Initializable {
                     scene.getStylesheets().addAll(this.getClass().getResource("FinalBookingInfo.css").toExternalForm());
                     stage4.setScene(scene);
                     stage4.show();
-                    
-                    s3.setString(1, FlightId);
-                    s3.setDate(2, HomePageWindowController.date);
-                    s3.setInt(3, HomePageWindowController.passenger);
-                    s3.setString(4, GeneralLoginWindowController.userNameData);
-                    FARE = (HomePageWindowController.passenger) * (Integer.parseInt(TicketAvailabilityWindowController.neww.getD()));
-                    s3.setInt(5, FARE);
-                    System.out.println();
-                    s3.registerOutParameter(6, OracleTypes.NUMBER);
-
-                    s3.executeUpdate();
-                    java.math.BigDecimal x = (java.math.BigDecimal) s3.getObject(6);
-                    PNR = x.toString();
                     TrayNotification tray=new TrayNotification();
                         tray.setTitle("Congrats");
                         tray.setMessage("Ticket Booked");
                         tray.setNotificationType(NotificationType.SUCCESS);
                         tray.showAndDismiss(Duration.millis(2000));
+                                           
+                    System.out.println(PNR);
                     Stage stage5;
                     stage5 = (Stage) BookTicketButton.getScene().getWindow();
                     stage5.close();

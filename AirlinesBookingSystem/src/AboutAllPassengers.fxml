@@ -11,19 +11,19 @@
    <children>
       <AnchorPane layoutX="8.0" layoutY="26.0" opacity="0.54" prefHeight="505.0" prefWidth="702.0" style="-fx-background-color: white;" />
       <JFXTextField fx:id="Name1" layoutX="50.0" layoutY="262.0" prefHeight="25.0" prefWidth="189.0" visible="false" />
-      <JFXTextField fx:id="Name2" layoutX="50.0" layoutY="318.0" prefHeight="25.0" prefWidth="189.0" visible="false" />
-      <JFXTextField fx:id="Name3" layoutX="50.0" layoutY="369.0" prefHeight="25.0" prefWidth="189.0" visible="false" />
-      <JFXTextField fx:id="Name4" layoutX="50.0" layoutY="422.0" prefHeight="25.0" prefWidth="189.0" visible="false" />
-      <JFXTextField fx:id="Name5" layoutX="50.0" layoutY="476.0" prefHeight="25.0" prefWidth="189.0" visible="false" />
       <JFXTextField fx:id="Age1" layoutX="320.0" layoutY="262.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
-      <JFXTextField fx:id="Age2" layoutX="320.0" layoutY="318.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
-      <JFXTextField fx:id="Age3" layoutX="320.0" layoutY="369.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
-      <JFXTextField fx:id="Age4" layoutX="320.0" layoutY="422.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
-      <JFXTextField fx:id="Age5" layoutX="323.0" layoutY="476.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
       <JFXComboBox fx:id="Gender1" layoutX="499.0" layoutY="262.0" prefHeight="25.0" prefWidth="92.0" visible="false" />
+      <JFXTextField fx:id="Name2" layoutX="50.0" layoutY="318.0" prefHeight="25.0" prefWidth="189.0" visible="false" />
+      <JFXTextField fx:id="Age2" layoutX="320.0" layoutY="318.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
       <JFXComboBox fx:id="Gender2" layoutX="496.0" layoutY="318.0" prefHeight="25.0" prefWidth="98.0" visible="false" />
+      <JFXTextField fx:id="Name3" layoutX="50.0" layoutY="369.0" prefHeight="25.0" prefWidth="189.0" visible="false" />
+      <JFXTextField fx:id="Age3" layoutX="320.0" layoutY="369.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
       <JFXComboBox fx:id="Gender3" layoutX="502.0" layoutY="369.0" prefHeight="25.0" prefWidth="98.0" visible="false" />
+      <JFXTextField fx:id="Name4" layoutX="50.0" layoutY="422.0" prefHeight="25.0" prefWidth="189.0" visible="false" />
+      <JFXTextField fx:id="Age4" layoutX="320.0" layoutY="422.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
       <JFXComboBox fx:id="Gender4" layoutX="499.0" layoutY="422.0" prefHeight="25.0" prefWidth="104.0" visible="false" />
+      <JFXTextField fx:id="Name5" layoutX="50.0" layoutY="476.0" prefHeight="25.0" prefWidth="189.0" visible="false" />
+      <JFXTextField fx:id="Age5" layoutX="323.0" layoutY="476.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
       <JFXComboBox fx:id="Gender5" layoutX="499.0" layoutY="476.0" prefHeight="25.0" prefWidth="104.0" visible="false" />
       <Text layoutX="126.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
          <font>

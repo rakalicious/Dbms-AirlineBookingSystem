@@ -99,7 +99,7 @@ public class LoginWindowController implements Initializable {
 
                             String s = r1.getString("PASSWORD");
                             System.out.println(s);
-                            if (s.equalsIgnoreCase(passwordData)) {
+                            if (s.equals(passwordData)) {
                                 log = true;
                             }
                             /*else

@@ -89,20 +89,20 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
+      <ComboBox fx:id="To_Combo_Box" layoutX="160.0" layoutY="245.0" prefWidth="150.0" />
+      <JFXDatePicker fx:id="Date_Field" layoutX="166.0" layoutY="295.0" prefHeight="29.0" prefWidth="150.0" promptText="Date" />
+      <JFXComboBox fx:id="No_Of_Passenger_Field" layoutX="238.0" layoutY="348.0" />
       <ComboBox fx:id="Class_Combo_Box" layoutX="166.0" layoutY="390.0" prefWidth="150.0" />
       <Text layoutX="92.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Class">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <JFXComboBox fx:id="No_Of_Passenger_Field" layoutX="238.0" layoutY="348.0" />
       <Text layoutX="44.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Passengers">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <JFXDatePicker fx:id="Date_Field" layoutX="166.0" layoutY="295.0" prefHeight="29.0" prefWidth="150.0" promptText="Date" />
-      <ComboBox fx:id="To_Combo_Box" layoutX="160.0" layoutY="245.0" prefWidth="150.0" />
       <ComboBox fx:id="From_Combo_Box" layoutX="160.0" layoutY="196.0" prefWidth="150.0" />
       <Text layoutX="56.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Journey Date">
          <font>
