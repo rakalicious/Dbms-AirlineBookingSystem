@@ -204,8 +204,7 @@ BEGIN
 	select max_seats into maxm from aeroplane_detail where aeroplane_detail.plane_id = (select flight_map.plane_id 
 	from flight_map where flight_map.flight_id=flightid);
 	left := maxm - booked;
-END find_seats;
-/
+END;
 
 
 
@@ -492,9 +491,9 @@ insert into distances values('KOL','HYD',1180);
 insert into distances values('KOL','DXB',3380);
 insert into distances values('KOL','AMD',1806);
 insert into distances values('KOL','PNQ',1575);
-insert into distances values('HYD','AMD',876);
-insert into distances values('HYD','DXB',2556);
-insert into distances values('HYD','PNQ',504);
+insert into distances values('HYD','AMD','876');
+insert into distances values('HYD','DXB','2556');
+insert into distances values('HYD','PNQ','504');
 insert into distances values('AMD','DXB',1782);
 insert into distances values('AMD','PNQ',518);
 insert into distances values('DXB','PNQ',2035);
@@ -615,6 +614,8 @@ insert into aeroplane_detail values  ('pid107',110 ,'FlyEmirates',1.66);
 insert into aeroplane_detail values ('pid108',100 ,'AirAsia',1.56);
 insert into aeroplane_detail values ('pid109',120 ,'Indigo',0.63);
 insert into aeroplane_detail values ('pid110',130 ,'AirIndia',0.81);
+insert into aeroplane_detail values ('pid051',110 ,'Vistara',1.56);
+insert into aeroplane_detail values ('pid052',110,'SpiceJet',0.43);
 
 /*
  * this table contains all the flights in a week that fly between two cities. 
