@@ -71,5 +71,10 @@
       <Text fx:id="DepartureText" layoutX="419.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="61.13671875" />
       <Text layoutX="534.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival :" />
       <Text fx:id="ArrivalText" layoutX="591.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="71.9999981559813" />
+      <Text fx:id="warning_Text" layoutX="242.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="161.13671875">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

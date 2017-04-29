@@ -171,7 +171,7 @@ public class SignUpWindowController implements Initializable {
 
                         
                         CallableStatement s2;
-                    String Addr = Address_Line1.getText()+ "|" + Address_Line2.getText() + "|" + Address_Line3.getText() ;
+                    String Addr = Address_Line1.getText()+ "|" + Address_Line2.getText() + "|" + Address_Line3.getText()+"|"+NationalityTextField.getText() ;
                         String quer = "begin insert_user(?,?,?,?,?,?,?,?,?);end;";
 
                         s2 = test.con.prepareCall(quer);

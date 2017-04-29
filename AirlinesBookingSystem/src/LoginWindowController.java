@@ -88,7 +88,6 @@ public class LoginWindowController implements Initializable {
                     try {
                         Class.forName("oracle.jdbc.driver.OracleDriver");
                         DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-                        //Connection con = DriverManager.getConnection("jdbc:mysql://172.26.47.153:3306/login_chat", "admin", "12345678");
                         PreparedStatement stt = test.con.prepareStatement("select password from emp_login_record where emp_id =?");
                         stt.setString(1, userNameData);
                         r1 = stt.executeQuery();
@@ -109,6 +108,7 @@ public class LoginWindowController implements Initializable {
                     PasswordTextField.setText("");
                     UsernameTextField.setText("");
                     }/*/
+                            
                         } else {
                             warningText.setText("*Username or Password is incorrect");
                             PasswordTextField.setText("");

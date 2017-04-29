@@ -116,13 +116,17 @@ public class MyProfileController implements Initializable {
                 Dob_Field.setText(df.format(r1.getDate("DOB")));
                
                 Email_Field.setText(r1.getString("Email"));
-                String One,Two,Three;
+                String One,Two,Three,four;
                 One=st.nextToken();
                 Two=st.nextToken();
                 Three=st.nextToken();
+                
+               //four=st.nextToken();
               Address_Line1.setText(One);
                 Address_Line2.setText(Two);
                Address_Line3.setText(Three);
+               //Nationality_Field.setText(four);
+               
 
             }
 

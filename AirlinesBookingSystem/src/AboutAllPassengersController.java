@@ -40,6 +40,9 @@ public class AboutAllPassengersController implements Initializable {
 
     @FXML
     private JFXTextField Name1;
+     @FXML
+    private Text warning_Text;
+
     @FXML
     private JFXTextField Name2;
     @FXML
@@ -119,7 +122,7 @@ public class AboutAllPassengersController implements Initializable {
         Name2.setText(null);
         Name3.setText(null);
         Name4.setText(null);
-        Name5.setText(null);
+        Name5.setText("");
         Age1.setText("-1");
         Age2.setText("-1");
         Age3.setText("-1");
@@ -210,20 +213,8 @@ public class AboutAllPassengersController implements Initializable {
                     System.out.println(s.nextToken());
                     String p = s.nextToken();
                     FlightId = p.substring(0, p.length() - 1);
-                    // System.out.println(FlightId);
+                    
 
-                    s3.setString(1, FlightId);
-                    s3.setDate(2, HomePageWindowController.date);
-                    s3.setInt(3, HomePageWindowController.passenger);
-                    s3.setString(4, GeneralLoginWindowController.userNameData);
-                    FARE = (HomePageWindowController.passenger) * (Integer.parseInt(TicketAvailabilityWindowController.neww.getD()));
-                    s3.setInt(5, FARE);
-                    System.out.println();
-                    s3.registerOutParameter(6, OracleTypes.NUMBER);
-
-                    s3.executeUpdate();
-                    java.math.BigDecimal x = (java.math.BigDecimal) s3.getObject(6);
-                    PNR = x.toString();
                     System.out.println(PNR);
 
                     String n1 = Name1.getText();
@@ -272,6 +263,19 @@ public class AboutAllPassengersController implements Initializable {
                     scene.getStylesheets().addAll(this.getClass().getResource("FinalBookingInfo.css").toExternalForm());
                     stage4.setScene(scene);
                     stage4.show();
+                    
+                    s3.setString(1, FlightId);
+                    s3.setDate(2, HomePageWindowController.date);
+                    s3.setInt(3, HomePageWindowController.passenger);
+                    s3.setString(4, GeneralLoginWindowController.userNameData);
+                    FARE = (HomePageWindowController.passenger) * (Integer.parseInt(TicketAvailabilityWindowController.neww.getD()));
+                    s3.setInt(5, FARE);
+                    System.out.println();
+                    s3.registerOutParameter(6, OracleTypes.NUMBER);
+
+                    s3.executeUpdate();
+                    java.math.BigDecimal x = (java.math.BigDecimal) s3.getObject(6);
+                    PNR = x.toString();
                     TrayNotification tray=new TrayNotification();
                         tray.setTitle("Congrats");
                         tray.setMessage("Ticket Booked");
@@ -281,7 +285,7 @@ public class AboutAllPassengersController implements Initializable {
                     stage5 = (Stage) BookTicketButton.getScene().getWindow();
                     stage5.close();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                   warning_Text.setText("Invalid Entry");
                 }
             }
         });

@@ -32,6 +32,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
@@ -178,7 +179,11 @@ public class HomePageWindowController implements Initializable {
                     }
 
                 } catch (SQLException ex) {
-                    Logger.getLogger(TicketAvailabilityWindowController.class.getName()).log(Level.SEVERE, null, ex);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Invalid PNR");
+                    alert.setHeaderText("Invalid PNR");
+                    alert.setContentText("Please input valid pnr");
+                                        alert.showAndWait();
                 }
 
             }

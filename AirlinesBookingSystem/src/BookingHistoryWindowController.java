@@ -63,6 +63,7 @@ public class BookingHistoryWindowController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        lst.clear();
         PNRColumn.setCellValueFactory(new PropertyValueFactory<Data4, String>("a"));
         DateColumn.setCellValueFactory(new PropertyValueFactory<Data4, String>("b"));
 

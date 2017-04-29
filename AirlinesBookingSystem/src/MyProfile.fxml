@@ -61,19 +61,19 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Text fx:id="Name_Field" layoutX="184.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BhosdiWala" wrappingWidth="156.11914850771427">
+      <Text fx:id="Name_Field" layoutX="184.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="156.11914850771427">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fx:id="Dob_Field" layoutX="184.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MarGya" wrappingWidth="135.00000335276127">
+      <Text fx:id="Dob_Field" layoutX="184.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="135.00000335276127">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fx:id="Email_Field" layoutX="512.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chutiya@Chutiyagiri.com">
+      <Text fx:id="Email_Field" layoutX="512.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text fx:id="Nationality_Field" layoutX="522.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bihari" wrappingWidth="136.75047632306814">
+      <Text fx:id="Nationality_Field" layoutX="522.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indian" wrappingWidth="136.75047632306814">
          <font>
             <Font size="14.0" />
          </font></Text>
