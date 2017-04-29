@@ -1,5 +1,4 @@
 						Welome to Airline Booking System
-								- BY GROUP T (IIT2015016, IIT2015038, IIT2015040,IIT2015043,IIT2015068)
 
 Database used here is Oracle 12c .
  * To install it, go to http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html
