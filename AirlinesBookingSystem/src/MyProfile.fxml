@@ -50,7 +50,6 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="Mobile_Field" focusColor="#1d1e1e" layoutX="523.0" layoutY="165.0" />
       <Text layoutX="410.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile :">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -73,6 +72,10 @@
          <font>
             <Font size="14.0" />
          </font></Text>
+      <JFXTextField fx:id="Mobile_Field" focusColor="#1d1e1e" layoutX="523.0" layoutY="165.0" />
+      <JFXTextField fx:id="Address_Line1" layoutX="136.0" layoutY="373.0" prefHeight="25.0" prefWidth="253.0" />
+      <JFXTextField fx:id="Address_Line2" layoutX="140.0" layoutY="425.0" prefHeight="25.0" prefWidth="253.0" />
+      <JFXTextField fx:id="Address_Line3" layoutX="134.0" layoutY="491.0" prefHeight="25.0" prefWidth="253.0" />
       <Text fx:id="Nationality_Field" layoutX="522.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indian" wrappingWidth="136.75047632306814">
          <font>
             <Font size="14.0" />
@@ -101,9 +104,6 @@
       <JFXPasswordField fx:id="New_Pass_Field" layoutX="578.0" layoutY="432.0" />
       <JFXPasswordField fx:id="Confirm_Pass_Field" layoutX="578.0" layoutY="491.0" />
       <Text fx:id="Warning_pass_text" fill="#e80a0a" layoutX="495.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="218.08594156429172" />
-      <JFXTextField fx:id="Address_Line1" layoutX="136.0" layoutY="373.0" prefHeight="25.0" prefWidth="253.0" />
-      <JFXTextField fx:id="Address_Line2" layoutX="140.0" layoutY="425.0" prefHeight="25.0" prefWidth="253.0" />
-      <JFXTextField fx:id="Address_Line3" layoutX="134.0" layoutY="491.0" prefHeight="25.0" prefWidth="253.0" />
       <Text layoutX="36.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address Line 1" wrappingWidth="89.99999463558197" />
       <Text layoutX="35.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address Line 2" wrappingWidth="90.0000031851232" />
       <Text layoutX="36.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address Line 3" wrappingWidth="90.0000031851232" />

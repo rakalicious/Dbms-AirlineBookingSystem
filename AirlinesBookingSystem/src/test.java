@@ -43,7 +43,7 @@ public class test extends Application {
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
                      //   con = DriverManager.getConnection("jdbc:oracle:thin:@172.26.45:1522:dbmsproject", USER, PASS);
 
-           con = DriverManager.getConnection("jdbc:oracle:thin:@172.26.44.1:1522:orcl", USER, PASS);
+           con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", USER, PASS);
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("GeneralLoginWindow.fxml"));
             primaryStage.resizableProperty().setValue(Boolean.FALSE);
             primaryStage.setTitle("Login Window");

@@ -69,7 +69,6 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="Booking_Id_Flight_Status" layoutX="565.0" layoutY="452.0" />
       <JFXDrawer layoutX="309.0" layoutY="75.0" />
       <JFXDrawersStack layoutX="266.0" layoutY="95.0" prefHeight="0.0" prefWidth="0.0" />
       <JFXToolbar layoutX="154.0" layoutY="32.0" prefHeight="0.0" prefWidth="0.0" />
@@ -89,10 +88,6 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <ComboBox fx:id="To_Combo_Box" layoutX="160.0" layoutY="245.0" prefWidth="150.0" />
-      <JFXDatePicker fx:id="Date_Field" layoutX="166.0" layoutY="295.0" prefHeight="29.0" prefWidth="150.0" promptText="Date" />
-      <JFXComboBox fx:id="No_Of_Passenger_Field" layoutX="238.0" layoutY="348.0" />
-      <ComboBox fx:id="Class_Combo_Box" layoutX="166.0" layoutY="390.0" prefWidth="150.0" />
       <Text layoutX="92.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Class">
          <font>
             <Font size="15.0" />
@@ -104,6 +99,11 @@
          </font>
       </Text>
       <ComboBox fx:id="From_Combo_Box" layoutX="160.0" layoutY="196.0" prefWidth="150.0" />
+      <ComboBox fx:id="To_Combo_Box" layoutX="160.0" layoutY="245.0" prefWidth="150.0" />
+      <JFXDatePicker fx:id="Date_Field" layoutX="166.0" layoutY="295.0" prefHeight="29.0" prefWidth="150.0" promptText="Date" />
+      <JFXComboBox fx:id="No_Of_Passenger_Field" layoutX="238.0" layoutY="348.0" />
+      <ComboBox fx:id="Class_Combo_Box" layoutX="166.0" layoutY="390.0" prefWidth="150.0" />
+      <JFXTextField fx:id="Booking_Id_Flight_Status" layoutX="565.0" layoutY="452.0" />
       <Text layoutX="56.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Journey Date">
          <font>
             <Font size="15.0" />

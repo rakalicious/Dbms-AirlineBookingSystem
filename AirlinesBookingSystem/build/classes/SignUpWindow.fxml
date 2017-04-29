@@ -58,10 +58,6 @@
          <font>
             <Font size="14.0" />
          </font></Text>
-      <JFXButton fx:id="CheckAvailabilityButton" blendMode="DARKEN" buttonType="RAISED" layoutX="219.0" layoutY="300.0" style="-fx-background-color: white;" text="Check Avalability" textFill="#0d0d0d">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></JFXButton>
       <JFXButton fx:id="SignUpButton" blendMode="DARKEN" buttonType="RAISED" layoutX="257.0" layoutY="548.0" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: white;" text="SignUp" textFill="#0a0a0a">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -72,16 +68,20 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
-      <JFXPasswordField fx:id="PasswordTextField" layoutX="158.0" layoutY="371.0" promptText="Enter Password" />
-      <JFXPasswordField fx:id="ConfirmPasswordTextField" layoutX="158.0" layoutY="416.0" promptText="Confirm Password" />
       <JFXTextField fx:id="FirstNameTextField" layoutX="158.0" layoutY="85.0" prefHeight="25.0" prefWidth="149.0" />
       <JFXTextField fx:id="LastNameTextField" layoutX="158.0" layoutY="140.0" prefHeight="25.0" prefWidth="149.0" />
-      <JFXTextField fx:id="AadharNoTextField" layoutX="524.0" layoutY="222.0" prefHeight="25.0" prefWidth="155.0" />
+      <JFXDatePicker fx:id="Date_Field" defaultColor="#101111" layoutX="167.0" layoutY="185.0" prefHeight="29.0" prefWidth="155.0" />
       <JFXTextField fx:id="UsernameTextField" layoutX="167.0" layoutY="245.0" prefHeight="25.0" prefWidth="155.0" />
+      <JFXButton fx:id="CheckAvailabilityButton" blendMode="DARKEN" buttonType="RAISED" layoutX="219.0" layoutY="300.0" style="-fx-background-color: white;" text="Check Avalability" textFill="#0d0d0d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></JFXButton>
       <JFXTextField fx:id="NationalityTextField" layoutX="527.0" layoutY="86.0" prefHeight="25.0" prefWidth="149.0" />
       <JFXTextField fx:id="EmailTextField" layoutX="527.0" layoutY="127.0" prefHeight="25.0" prefWidth="149.0" />
       <JFXTextField fx:id="MobileNoTextField" layoutX="527.0" layoutY="172.0" prefHeight="25.0" prefWidth="149.0" />
-      <JFXDatePicker fx:id="Date_Field" defaultColor="#101111" layoutX="167.0" layoutY="185.0" prefHeight="29.0" prefWidth="155.0" />
+      <JFXTextField fx:id="AadharNoTextField" layoutX="524.0" layoutY="222.0" prefHeight="25.0" prefWidth="155.0" />
+      <JFXPasswordField fx:id="PasswordTextField" layoutX="158.0" layoutY="371.0" promptText="Enter Password" />
+      <JFXPasswordField fx:id="ConfirmPasswordTextField" layoutX="158.0" layoutY="416.0" promptText="Confirm Password" />
       <Text layoutX="405.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address Line 1" wrappingWidth="89.99999463558197" />
       <Text layoutX="400.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address Line 2" wrappingWidth="90.0000031851232" />
       <Text layoutX="395.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address Line 3" wrappingWidth="90.0000031851232" />
